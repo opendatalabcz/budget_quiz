@@ -1,3 +1,18 @@
+app/src/node_modules
+app/src/public/hot
+app/src/public/storage
+app/src/storage/*.key
+app/src/vendor
+app/src/.env
+app/src/.env.backup
+app/src/.phpunit.result.cache
+app/src/Homestead.json
+app/src/Homestead.yaml
+app/src/npm-debug.log
+app/src/yarn-error.log
+app/src/.idea
+app/src/.vscode
+app/docker/postgres-data
 
 # Created by https://www.toptal.com/developers/gitignore/api/git,laravel,react,composer,phpstorm
 # Edit at https://www.toptal.com/developers/gitignore?templates=git,laravel,react,composer,phpstorm
