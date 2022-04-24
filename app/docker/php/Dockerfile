@@ -8,12 +8,15 @@ RUN apt update \
             libzip-dev \
             zip \
             zlib1g-dev \
+            npm \
         && docker-php-ext-install \
             intl \
             opcache \
             pdo \
             pdo_pgsql \
             pgsql
+
+RUN a2enmod rewrite
 
 WORKDIR /var/www/app
 

@@ -13,6 +13,7 @@ app/src/yarn-error.log
 app/src/.idea
 app/src/.vscode
 app/docker/postgres/data
+.idea
 
 # Created by https://www.toptal.com/developers/gitignore/api/git,laravel,react,composer,phpstorm
 # Edit at https://www.toptal.com/developers/gitignore?templates=git,laravel,react,composer,phpstorm

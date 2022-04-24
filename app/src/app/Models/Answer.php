@@ -19,7 +19,7 @@ class Answer extends Model
 
     public function quizzes()
     {
-        return $this->belongsToMany(Quizz::class, 'quizz_answers');
+        return $this->belongsToMany(Quiz::class, 'quiz_answers');
     }
-    
+
 }
