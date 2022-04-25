@@ -1,4 +1,16 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 .login {
     max-width: 330px;
     width: 100%;
+}
+
+.actions-col {
+    form.edit-button {
+        display: inline-block;
+    }
+
+    .btn {
+        padding: 0;
+    }
 }

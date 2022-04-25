@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\RegionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
@@ -25,8 +26,8 @@ Route::controller(LoginController::class)->group(function() {
     Route::get('admin/logout', 'logout')->name('admin.logout');
 });
 
-Route::prefix('admin')->middleware('auth')->group(function () {
-   Route::get('/', function (Request $request) {
-       return $request->user();
-   })->name('admin.welcome');
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+   Route::view('/', 'admin.welcome')->name('welcome');
+
+   Route::resource('regions', RegionController::class)->except('show');
 });
