@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BudgetCapitolController;
 use App\Http\Controllers\Admin\PartyController;
 use App\Http\Controllers\Admin\RegionController;
 use Illuminate\Http\Request;
@@ -32,4 +33,5 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
    Route::resource('regions', RegionController::class)->except('show');
    Route::resource('parties', PartyController::class)->except('show');
+   Route::resource('budget_capitols', BudgetCapitolController::class)->except('show');
 });

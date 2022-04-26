@@ -1,21 +1,11 @@
 <x-admin.layout>
     <x-slot:title>
         @if($party->exists)
-            Upravit politickou stranu ID {{ $party->id  }}
+            Upravit politickou stranu ID {{ $party->id }}
         @else
             Přidat novou politickou stranu
         @endif
     </x-slot:title>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 
     <form action="@if($party->exists) {{ route('admin.parties.update', $party)  }} @else {{ route('admin.parties.store') }} @endif" method="POST">
         @csrf
@@ -23,13 +13,31 @@
             @method('PATCH')
         @endif
         <div class="mb-3">
-            <label for="short-name-input" class="form-label">Zkratka</label>
-            <input type="text" name="short_name" value="{{ old('short_name', $party->short_name) }}" id="short-name-input" class="form-control" maxlength="50" required>
+            <label for="party-short-name-input" class="form-label">Zkratka</label>
+            <input type="text" name="party_short_name"
+                   value="{{ old('party_short_name', $party->short_name) }}"
+                   id="party-short-name-input"
+                   @class(['form-control', 'is-invalid' => $errors->has('budget_capitol_number')])
+                   maxlength="50" required>
+            @error('budget_capitol_name')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         <div class="mb-3">
-            <label for="name-input" class="form-label">Název</label>
-            <input type="text" name="name" value="{{ old('name', $party->name) }}" id="name-input" class="form-control" maxlength="150" required>
+            <label for="party-name-input" class="form-label">Název</label>
+            <input type="text" name="party_name"
+                   value="{{ old('party_name', $party->name) }}"
+                   id="party-name-input"
+                   @class(['form-control', 'is-invalid' => $errors->has('budget_capitol_number')])
+                   maxlength="150" required>
+            @error('budget_capitol_name')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">@if($party->exists) Upravit @else Přidat @endif</button>

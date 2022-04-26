@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegionRequest;
 use App\Models\Region;
-use Illuminate\Http\Request;
 
 class RegionController extends Controller
 {
@@ -31,26 +31,23 @@ class RegionController extends Controller
     /**
      * Store new region
      *
-     * @param Request $request
+     * @param RegionRequest $request
      */
-    public function store(Request $request)
+    public function store(RegionRequest $request)
     {
-        $validated = $request->validate([
-           'name' => 'required|max:100'
-        ]);
+        $validated = $request->validated();
 
         $region = new Region;
 
-        $region->name = $validated['name'];
+        $region->name = $validated['region_name'];
 
         $region->save();
 
-        return redirect()->route('admin.regions.index')->with('success', 'Kraj "'. $region->name .'" byl přidán');
-
+        return redirect()->route('admin.regions.index')->with('success', 'Kraj ID "'. $region->id .'" byl přidán');
     }
 
     /**
-     * Show for editing a region
+     * Show form for editing a region
      *
      * @param Region $region
      */
@@ -62,20 +59,18 @@ class RegionController extends Controller
     /**
      * Update a region
      *
-     * @param Request $request
+     * @param RegionRequest $request
      * @param Region $region
      */
-    public function update(Request $request, Region $region)
+    public function update(RegionRequest $request, Region $region)
     {
-        $validated = $request->validate([
-            'name' => 'required|max:100'
-        ]);
+        $validated = $request->validated();
 
-        $region->name = $validated['name'];
+        $region->name = $validated['region_name'];
 
         $region->save();
 
-        return redirect()->route('admin.regions.index')->with('success', 'Kraj "'. $region->name .'" byl upraven');
+        return redirect()->route('admin.regions.index')->with('success', 'Kraj ID "'. $region->id .'" byl upraven');
     }
 
     /**
@@ -87,6 +82,6 @@ class RegionController extends Controller
     {
         $region->delete();
 
-        return redirect()->route('admin.regions.index')->with('success', 'Kraj "' . $region->name . '" byl smazán');
+        return redirect()->route('admin.regions.index')->with('success', 'Kraj ID "' . $region->id . '" byl smazán');
     }
 }

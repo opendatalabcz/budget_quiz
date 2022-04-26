@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PartyRequest;
 use App\Models\Party;
-use Illuminate\Http\Request;
 
 class PartyController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all parties
      *
      */
     public function index()
@@ -20,7 +20,7 @@ class PartyController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new party
      *
      */
     public function create()
@@ -29,31 +29,28 @@ class PartyController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store new party
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param PartyRequest $request
      */
-    public function store(Request $request)
+    public function store(PartyRequest $request)
     {
-        $validated = $request->validate([
-            'short_name' => 'required|max:50',
-            'name' => 'required|max:150'
-        ]);
+        $validated = $request->validated();
 
         $party = new Party;
 
-        $party->short_name = $validated['short_name'];
-        $party->name = $validated['name'];
+        $party->short_name = $validated['party_short_name'];
+        $party->name = $validated['party_name'];
 
         $party->save();
 
-        return redirect()->route('admin.parties.index')->with('success', 'Strana "'. $party->short_name .'" byla přidána');
+        return redirect()->route('admin.parties.index')->with('success', 'Strana ID "'. $party->id .'" byla přidána');
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing party
      *
-     * @param  \App\Models\Party  $party
+     * @param Party $party
      */
     public function edit(Party $party)
     {
@@ -61,36 +58,32 @@ class PartyController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a party
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Party  $party
+     * @param PartyRequest $request
+     * @param Party $party
      */
-    public function update(Request $request, Party $party)
+    public function update(PartyRequest $request, Party $party)
     {
-        $validated = $request->validate([
-            'short_name' => 'required|max:50',
-            'name' => 'required|max:150'
-        ]);
-
-        $party->short_name = $validated['short_name'];
-        $party->name = $validated['name'];
+        $validated = $request->validated();
+        $party->short_name = $validated['party_short_name'];
+        $party->name = $validated['party_name'];
 
         $party->save();
 
-        return redirect()->route('admin.parties.index')->with('success', 'Strana "'. $party->short_name .'" byla upravena');
+        return redirect()->route('admin.parties.index')->with('success', 'Strana ID "'. $party->id .'" byla upravena');
 
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove a party
      *
-     * @param  \App\Models\Party  $party
+     * @param Party $party
      */
     public function destroy(Party $party)
     {
         $party->delete();
 
-        return redirect()->route('admin.parties.index')->with('success', 'Strana "' . $party->short_name . '" byla smazána');
+        return redirect()->route('admin.parties.index')->with('success', 'Strana ID "' . $party->id . '" byla smazána');
     }
 }
