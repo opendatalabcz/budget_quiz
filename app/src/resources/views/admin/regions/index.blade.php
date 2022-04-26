@@ -19,10 +19,10 @@
                         <td>{{ $region->id }}</td>
                         <td>{{ $region->name }}</td>
                         <td class="actions-col">
-                            <a href="{{ route("admin.regions.edit", ["region" => $region]) }}" class="btn">
+                            <a href="{{ route("admin.regions.edit", $region) }}" class="btn">
                                 <i class="bi-pencil-square text-info"></i>
                             </a>
-                            <form action="{{ route('admin.regions.destroy', ["region" => $region]) }}" method="POST" class="edit-button">
+                            <form action="{{ route('admin.regions.destroy', $region) }}" method="POST" class="edit-button">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn"><i class="bi-trash text-danger"></i></button>

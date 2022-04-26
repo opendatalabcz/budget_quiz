@@ -9,7 +9,7 @@ class Answer extends Model
 
     public function question()
     {
-        return $this->belongsTo(Questions::class);
+        return $this->belongsTo(Question::class);
     }
 
     public function budgetStateChange()

@@ -1,6 +1,10 @@
 <x-admin.layout>
     <x-slot:title>
-        Vytvořit nový kraj
+        @if($region->exists)
+            Upravit kraj ID {{ $region->id  }}
+        @else
+            Přidat nový kraj
+        @endif
     </x-slot:title>
 
     @if ($errors->any())

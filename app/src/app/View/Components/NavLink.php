@@ -16,13 +16,13 @@ class NavLink extends Component
      *
      * @param Route $route
      * @param string $routeName
-     * @param bool $checkSubNames
+     * @param string $activeRoutes
      */
-    public function __construct(Route $route, string $routeName, bool $checkSubNames = true)
+    public function __construct(Route $route, string $routeName, string $activeRoutes = "subNames")
     {
         $this->routeName = $routeName;
 
-        if ($checkSubNames) {
+        if ($activeRoutes === "subNames") {
             $end = strrpos($routeName, '.');
 
             if ($end !== false) {

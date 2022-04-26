@@ -8,8 +8,8 @@
 
             <ul class="nav nav-pills">
                 <x-nav-link route-name="admin.regions.index">Kraje</x-nav-link>
-                <li class="nav-item"><a href="#" class="nav-link">Výsledky</a></li>
-                <li class="nav-item"><a href="{{ route('admin.logout') }}" class="nav-link">Odhlásit se</a></li>
+                <x-nav-link route-name="admin.parties.index">Strany</x-nav-link>
+                <x-nav-link route-name="admin.logout" active-routes="none">Odhlásit se</x-nav-link>
             </ul>
         </header>
     </div>

@@ -45,7 +45,7 @@ class RegionController extends Controller
 
         $region->save();
 
-        return redirect()->route('admin.regions.index')->with('success', 'Kraj "'. $region->name .'" byl vytvořen');
+        return redirect()->route('admin.regions.index')->with('success', 'Kraj "'. $region->name .'" byl přidán');
 
     }
 

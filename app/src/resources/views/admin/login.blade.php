@@ -19,9 +19,10 @@
                 <label for="password">Heslo</label>
             </div>
 
-            <div class="checkbox mb-3 mt-2">
-                <label>
-                    <input type="checkbox" name="remember" value="on" @if(old('remember') == 'on') checked @endif> Zapamatovat
+            <div class="form-check mb-3 mt-2">
+                <input class="form-check-input" type="checkbox" name="remember" value="on" id="rememberCheckbox" @checked(old('remember') == 'on')>
+                <label class="form-check-label" for="rememberCheckbox">
+                    Zapamatovat
                 </label>
             </div>
 

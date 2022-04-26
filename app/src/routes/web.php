@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PartyController;
 use App\Http\Controllers\Admin\RegionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,5 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
    Route::view('/', 'admin.welcome')->name('welcome');
 
    Route::resource('regions', RegionController::class)->except('show');
+   Route::resource('parties', PartyController::class)->except('show');
 });
