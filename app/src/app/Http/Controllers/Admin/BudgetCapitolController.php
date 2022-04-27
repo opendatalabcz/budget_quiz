@@ -15,7 +15,7 @@ class BudgetCapitolController extends Controller
     public function index()
     {
         return view('admin.budget_capitols.index', [
-            "budgetCapitols" => BudgetCapitol::all()
+            "budgetCapitols" => BudgetCapitol::with('budgetState')->get()
         ]);
     }
 

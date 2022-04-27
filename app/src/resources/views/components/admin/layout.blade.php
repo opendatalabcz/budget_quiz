@@ -23,7 +23,7 @@
                 @endisset
 
                 @isset($description)
-                    <p>{{ $description }}</p>
+                    <p class="lead">{{ $description }}</p>
                 @endisset
             </div>
         @endif

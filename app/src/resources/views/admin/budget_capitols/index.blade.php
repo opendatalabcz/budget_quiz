@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot:title>Kapitoly státního rozpočtu</x-slot:title>
-    <x-slot:description>Zde definované kraje se zobrazují ve výběru krajů v dotazníku před spuštěním kvízu</x-slot:description>
+    <x-slot:description>Zde jsou definované kapitoly státního rozpočtu, ke kterým se může přiřadit počáteční stav státního rozpočtu</x-slot:description>
 
     <a href="{{ route('admin.budget_capitols.create') }}" class="btn btn-success">Přidat</a>
 
@@ -11,6 +11,7 @@
                     <td>ID</td>
                     <td>Číslo</td>
                     <td>Název</td>
+                    <td>Stav rozpočtu</td>
                     <td>Akce</td>
                 </tr>
                 </thead>
@@ -20,6 +21,13 @@
                         <td>{{ $budgetCapitol->id }}</td>
                         <td>{{ $budgetCapitol->number }}</td>
                         <td>{{ $budgetCapitol->name }}</td>
+                        <td>
+                            @if(empty($budgetCapitol->budgetState))
+                                <a href="{{ route("admin.budget_capitols.budget_state.create", $budgetCapitol) }}">Přidat stav rozpočtu</a>
+                            @else
+                                <a href="{{ route("admin.budget_capitols.budget_state.show", [$budgetCapitol, $budgetCapitol->budgetState]) }}">Zobrazit stav rozpočtu</a>
+                            @endif
+                        </td>
                         <td class="actions-col">
                             <a href="{{ route("admin.budget_capitols.edit", $budgetCapitol) }}" class="btn">
                                 <i class="bi-pencil-square text-info"></i>
