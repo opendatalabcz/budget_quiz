@@ -3,11 +3,13 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class RegionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * Always returns true, authorization handled elsewhere.
      *
      * @return bool
      */
@@ -23,11 +25,27 @@ class RegionRequest extends FormRequest
      */
     public function rules()
     {
+        $unique_name = Rule::unique('App\Models\Region', 'name');
+
+        if ($this->region) {
+            $unique_name->ignore($this->region);
+        }
+
         return [
-            'region_name' => 'bail|required|max:100|unique:\App\Model\Region,name'
+            'region_name' => [
+                'bail',
+                'required',
+                'max:100',
+                $unique_name
+            ]
         ];
     }
 
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [

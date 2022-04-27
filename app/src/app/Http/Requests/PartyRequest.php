@@ -3,13 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PartyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * Always returns true, authorization handled elsewhere.
      *
-     * @return bool
+     * @return true
      */
     public function authorize()
     {
@@ -23,12 +25,35 @@ class PartyRequest extends FormRequest
      */
     public function rules()
     {
+        $unique_short_name = Rule::unique('App\Models\Party', 'short_name');
+        $unique_name = Rule::unique('App\Models\Party', 'name');
+
+        if ($this->party) {
+            $unique_short_name->ignore($this->party);
+            $unique_name->ignore($this->party);
+        }
+
         return [
-            'party_short_name' => 'bail|required|max:50|unique:\App\Models\Party,short_name',
-            'party_name' => 'bail|required|max:150\App\Models\Party,name'
+            'party_short_name' => [
+                'bail',
+                'required',
+                'max:50',
+                $unique_short_name
+            ],
+            'party_name' => [
+                'bail',
+                'required',
+                'max:150',
+                $unique_name
+            ]
         ];
     }
 
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [

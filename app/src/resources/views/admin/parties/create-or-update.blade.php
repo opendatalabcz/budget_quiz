@@ -19,7 +19,7 @@
                    id="party-short-name-input"
                    @class(['form-control', 'is-invalid' => $errors->has('budget_capitol_number')])
                    maxlength="50" required>
-            @error('budget_capitol_name')
+            @error('party_short_name')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -33,7 +33,7 @@
                    id="party-name-input"
                    @class(['form-control', 'is-invalid' => $errors->has('budget_capitol_number')])
                    maxlength="150" required>
-            @error('budget_capitol_name')
+            @error('party_name')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>

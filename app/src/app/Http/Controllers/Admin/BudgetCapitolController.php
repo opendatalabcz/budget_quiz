@@ -25,7 +25,7 @@ class BudgetCapitolController extends Controller
      */
     public function create()
     {
-        return view('admin.budget_capitols.createOrUpdate', ["budgetCapitol" => new BudgetCapitol]);
+        return view('admin.budget_capitols.create-or-update', ["budgetCapitol" => new BudgetCapitol]);
     }
 
     /**
@@ -54,7 +54,7 @@ class BudgetCapitolController extends Controller
      */
     public function edit(BudgetCapitol $budgetCapitol)
     {
-        return view('admin.budget_capitols.createOrUpdate', ["budgetCapitol" => $budgetCapitol]);
+        return view('admin.budget_capitols.create-or-update', ["budgetCapitol" => $budgetCapitol]);
     }
 
     /**

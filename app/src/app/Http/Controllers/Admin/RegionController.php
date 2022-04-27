@@ -25,7 +25,7 @@ class RegionController extends Controller
      */
     public function create()
     {
-        return view('admin.regions.createOrUpdate', ["region" => new Region]);
+        return view('admin.regions.create-or-update', ["region" => new Region]);
     }
 
     /**
@@ -53,7 +53,7 @@ class RegionController extends Controller
      */
     public function edit(Region $region)
     {
-        return view('admin.regions.createOrUpdate', ["region" => $region]);
+        return view('admin.regions.create-or-update', ["region" => $region]);
     }
 
     /**

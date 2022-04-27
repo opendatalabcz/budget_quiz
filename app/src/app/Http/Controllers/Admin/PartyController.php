@@ -25,7 +25,7 @@ class PartyController extends Controller
      */
     public function create()
     {
-        return view('admin.parties.createOrUpdate', ["party" => new Party]);
+        return view('admin.parties.create-or-update', ["party" => new Party]);
     }
 
     /**
@@ -54,7 +54,7 @@ class PartyController extends Controller
      */
     public function edit(Party $party)
     {
-        return view('admin.parties.createOrUpdate', ["party" => $party]);
+        return view('admin.parties.create-or-update', ["party" => $party]);
     }
 
     /**

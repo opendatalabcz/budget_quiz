@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BudgetCapitolController;
 use App\Http\Controllers\Admin\BudgetStateController;
 use App\Http\Controllers\Admin\PartyController;
+use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\RegionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,4 +38,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
    Route::resource('budget_capitols', BudgetCapitolController::class)->except('show');
 
    Route::resource('budget_capitols.budget_state', BudgetStateController::class)->except('index');
+
+   Route::resource('questions', QuestionController::class);
 });

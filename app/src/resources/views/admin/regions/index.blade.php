@@ -2,7 +2,7 @@
     <x-slot:title>Kraje</x-slot:title>
     <x-slot:description>Zde definované kraje se zobrazují ve výběru krajů v dotazníku před spuštěním kvízu</x-slot:description>
 
-    <a href="{{ route('admin.regions.create') }}" class="btn btn-success">Přidat</a>
+    <x-admin.button-add :href="route('admin.regions.create')" />
 
         <div class="table-responsive">
             <table class="table">
@@ -19,14 +19,8 @@
                         <td>{{ $region->id }}</td>
                         <td>{{ $region->name }}</td>
                         <td class="actions-col">
-                            <a href="{{ route("admin.regions.edit", $region) }}" class="btn">
-                                <i class="bi-pencil-square text-info"></i>
-                            </a>
-                            <form action="{{ route('admin.regions.destroy', $region) }}" method="POST" class="edit-button">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn"><i class="bi-trash text-danger"></i></button>
-                            </form>
+                            <x-admin.button-icon-edit :href="route('admin.regions.edit', $region)" />
+                            <x-admin.button-icon-delete :href="route('admin.regions.destroy', $region)" />
                         </td>
                     </tr>
                 @empty

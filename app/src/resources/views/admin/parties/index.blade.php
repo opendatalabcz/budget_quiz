@@ -2,7 +2,7 @@
     <x-slot:title>Strany</x-slot:title>
     <x-slot:description>Zde definované politické strany se zobrazují v dotazníku před spuštěním kvízu</x-slot:description>
 
-    <a href="{{ route('admin.parties.create') }}" class="btn btn-success">Přidat</a>
+    <x-admin.button-add :href="route('admin.parties.create')" />
 
     <div class="table-responsive">
         <table class="table">
@@ -21,19 +21,13 @@
                     <td>{{ $party->short_name }}</td>
                     <td>{{ $party->name }}</td>
                     <td class="actions-col">
-                        <a href="{{ route("admin.parties.edit", $party) }}" class="btn">
-                            <i class="bi-pencil-square text-info"></i>
-                        </a>
-                        <form action="{{ route('admin.parties.destroy', $party) }}" method="POST" class="edit-button">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn"><i class="bi-trash text-danger"></i></button>
-                        </form>
+                        <x-admin.button-icon-edit :href="route('admin.parties.edit', $party)" />
+                        <x-admin.button-icon-delete :href="route('admin.parties.destroy', $party)" />
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="3" class="text-center">
+                    <td colspan="4" class="text-center">
                         Žádná politická strana nebyla nalezena. <a href="{{ route('admin.parties.create') }}">Přidat novou politickou stranu</a>
                     </td>
                 </tr>

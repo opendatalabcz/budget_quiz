@@ -19,7 +19,7 @@ class BudgetStateController extends Controller
             return redirect()->route('admin.budget_capitols.index')->with('error', 'Kapitola rozpočtu ID ' . $budgetCapitol->id . ' již má přiřazen stav rozpočtu');
         }
 
-        return view('admin.budget_states.createOrUpdate', [
+        return view('admin.budget_states.create-or-update', [
             'budgetCapitol' => $budgetCapitol,
             'budgetState' => new BudgetState
         ]);
@@ -73,7 +73,7 @@ class BudgetStateController extends Controller
      */
     public function edit(BudgetCapitol $budgetCapitol, BudgetState $budgetState)
     {
-        return view('admin.budget_states.createOrUpdate', [
+        return view('admin.budget_states.create-or-update', [
             'budgetCapitol' => $budgetCapitol,
             'budgetState' => $budgetState
         ]);

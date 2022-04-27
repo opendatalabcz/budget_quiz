@@ -8,8 +8,9 @@ class BudgetStateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * Always returns true, authorization handled elsewhere.
      *
-     * @return bool
+     * @return true
      */
     public function authorize()
     {
@@ -24,15 +25,50 @@ class BudgetStateRequest extends FormRequest
     public function rules()
     {
         return [
-            'budget_state_income_first_year' => 'bail|required|numeric|min:0',
-            'budget_state_income_second_year' => 'bail|required|numeric|min:0',
-            'budget_state_income_third_year' => 'bail|required|numeric|min:0',
-            'budget_state_expense_first_year' => 'bail|required|numeric|min:0',
-            'budget_state_expense_second_year' => 'bail|required|numeric|min:0',
-            'budget_state_expense_third_year' => 'bail|required|numeric|min:0'
+            'budget_state_income_first_year'   => [
+                'bail',
+                'required',
+                'numeric',
+                'min:0'
+            ],
+            'budget_state_income_second_year'  => [
+                'bail',
+                'required',
+                'numeric',
+                'min:0'
+            ],
+            'budget_state_income_third_year'   => [
+                'bail',
+                'required',
+                'numeric',
+                'min:0'
+            ],
+            'budget_state_expense_first_year'  => [
+                'bail',
+                'required',
+                'numeric',
+                'min:0'
+            ],
+            'budget_state_expense_second_year' => [
+                'bail',
+                'required',
+                'numeric',
+                'min:0'
+            ],
+            'budget_state_expense_third_year'  => [
+                'bail',
+                'required',
+                'numeric',
+                'min:0'
+            ]
         ];
     }
 
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [

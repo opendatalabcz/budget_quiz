@@ -3,13 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class BudgetCapitolRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * Always returns true, authorization handled elsewhere.
      *
-     * @return bool
+     * @return true
      */
     public function authorize()
     {
@@ -23,12 +25,35 @@ class BudgetCapitolRequest extends FormRequest
      */
     public function rules()
     {
+        $unique_number = Rule::unique('App\Models\BudgetCapitol', 'number');
+        $unique_name = Rule::unique('App\Models\BudgetCapitol', 'name');
+
+        if ($this->budget_capitol) {
+            $unique_number->ignore($this->budget_capitol);
+            $unique_name->ignore($this->budget_capitol);
+        }
+
         return [
-            'budget_capitol_number' => 'bail|required|numeric|unique:\App\Models\BudgetCapitol,number',
-            'budget_capitol_name' => 'bail|required|max:100|unique:\App\Models\BudgetCapitol,name'
+            'budget_capitol_number' => [
+                'bail',
+                'required',
+                'numeric',
+                $unique_number
+            ],
+            'budget_capitol_name' => [
+                'bail',
+                'required',
+                'max:100',
+                $unique_name
+            ]
         ];
     }
 
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [
