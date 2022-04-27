@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BudgetStateRequest;
+use App\Http\Requests\Admin\BudgetStateRequest;
 use App\Models\BudgetCapitol;
 use App\Models\BudgetState;
 

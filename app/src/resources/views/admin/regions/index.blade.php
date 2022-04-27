@@ -7,11 +7,11 @@
         <div class="table-responsive">
             <table class="table">
                 <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Název</td>
-                    <td>Akce</td>
-                </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Název</th>
+                        <th>Akce</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @forelse ($regions as $region)

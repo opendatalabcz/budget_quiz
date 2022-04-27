@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PartyRequest;
+use App\Http\Requests\Admin\PartyRequest;
 use App\Models\Party;
 
 class PartyController extends Controller

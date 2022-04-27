@@ -7,12 +7,12 @@
         <div class="table-responsive">
             <table class="table">
                 <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Číslo</td>
-                    <td>Titulek</td>
-                    <td>Akce</td>
-                </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Číslo</th>
+                        <th>Titulek</th>
+                        <th>Akce</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @forelse ($questions as $question)

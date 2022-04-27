@@ -26,7 +26,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="question-title-input" class="form-label">Název</label>
+            <label for="question-title-input" class="form-label">Titulek</label>
             <input type="text" name="question_title"
                    value="{{ old('question_title', $question->title) }}"
                    id="question-title-input"

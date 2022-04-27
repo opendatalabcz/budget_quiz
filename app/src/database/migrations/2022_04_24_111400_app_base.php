@@ -42,20 +42,6 @@ return new class extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::create('budget_state_changes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->boolean('is_increase');
-            $table->boolean('is_expense');
-            $table->integer('first_year', false, true);
-            $table->integer('second_year', false, true);
-            $table->integer('third_year', false, true);
-            $table->foreignId('budget_capitol_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-        });
-
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
@@ -73,7 +59,21 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreignId('budget_state_change_id')
+        });
+
+        Schema::create('budget_state_changes', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->boolean('is_increase');
+            $table->boolean('is_expense');
+            $table->integer('first_year', false, true);
+            $table->integer('second_year', false, true);
+            $table->integer('third_year', false, true);
+            $table->foreignId('budget_capitol_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('answer_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
@@ -133,9 +133,9 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('budget_capitols');
         Schema::dropIfExists('budget_states');
-        Schema::dropIfExists('budget_state_changes');
         Schema::dropIfExists('questions');
         Schema::dropIfExists('answers');
+        Schema::dropIfExists('budget_state_changes');
         Schema::dropIfExists('regions');
         Schema::dropIfExists('parties');
         Schema::dropIfExists('quizzes');

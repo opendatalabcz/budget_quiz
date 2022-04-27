@@ -16,6 +16,37 @@
         </div>
         <div class="col-md-6">
             <h2>Odpovědi</h2>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titulek</th>
+                            <th>Akce</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($question->answers as $answer)
+                        <tr>
+                            <td>{{ $answer->id }}</td>
+                            <td>{{ $answer->title }}</td>
+                            <td class="actions-col">
+                                <x-admin.button-icon-show :href="route('admin.questions.answers.show', [$question, $answer])" />
+                                <x-admin.button-icon-edit :href="route('admin.questions.answers.edit', [$question, $answer])" />
+                                <x-admin.button-icon-delete :href="route('admin.questions.answers.destroy', [$question, $answer])" />
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3" class="text-center">
+                                Žádná odpověď nebyla nalezena. <a href="{{ route('admin.questions.answers.create', $question) }}">Přidat novou odpověď</a>
+                            </td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

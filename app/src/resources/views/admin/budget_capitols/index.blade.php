@@ -7,13 +7,13 @@
         <div class="table-responsive">
             <table class="table">
                 <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Číslo</td>
-                    <td>Název</td>
-                    <td>Stav rozpočtu</td>
-                    <td>Akce</td>
-                </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Číslo</th>
+                        <th>Název</th>
+                        <th>Stav rozpočtu</th>
+                        <th>Akce</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @forelse ($budgetCapitols as $budgetCapitol)

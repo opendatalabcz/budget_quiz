@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BudgetStateController;
 use App\Http\Controllers\Admin\PartyController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\RegionController;
+use App\Http\Controllers\Admin\AnswerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
@@ -34,10 +35,12 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
    Route::view('/', 'admin.welcome')->name('welcome');
 
    Route::resource('regions', RegionController::class)->except('show');
-   Route::resource('parties', PartyController::class)->except('show');
-   Route::resource('budget_capitols', BudgetCapitolController::class)->except('show');
 
+   Route::resource('parties', PartyController::class)->except('show');
+
+   Route::resource('budget_capitols', BudgetCapitolController::class)->except('show');
    Route::resource('budget_capitols.budget_state', BudgetStateController::class)->except('index');
 
    Route::resource('questions', QuestionController::class);
+   Route::resource('questions.answers', AnswerController::class)->except('index');
 });
