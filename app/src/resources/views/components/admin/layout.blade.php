@@ -9,6 +9,7 @@
             <ul class="nav nav-pills">
                 <x-nav-link route-name="admin.regions.index">Kraje</x-nav-link>
                 <x-nav-link route-name="admin.parties.index">Strany</x-nav-link>
+                <x-nav-link route-name="admin.educations.index">Vzdělání</x-nav-link>
                 <x-nav-link route-name="admin.budget_capitols.index">Kapitoly rozpočtu</x-nav-link>
                 <x-nav-link route-name="admin.questions.index">Otázky</x-nav-link>
                 <x-nav-link route-name="admin.logout" active-routes="none">Odhlásit se</x-nav-link>

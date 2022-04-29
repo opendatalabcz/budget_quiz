@@ -20,4 +20,9 @@ class Quiz extends Model
     {
         return $this->belongsTo(Party::class);
     }
+
+    public function education()
+    {
+        return $this->belongsTo(Education::class);
+    }
 }

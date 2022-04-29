@@ -19,9 +19,9 @@
             </a>
 
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Kvíz</a></li>
-                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Kvíz</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Výsledky</a></li>
+                <x-nav-link route-name="index">Úvod</x-nav-link>
+                <x-nav-link route-name="quiz.index">Kvíz</x-nav-link>
+                <x-nav-link route-name="results">Výsledky</x-nav-link>
             </ul>
         </header>
     </div>

@@ -23,6 +23,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Titulek</th>
+                            <th>Změna stavu rozpočtu</th>
                             <th>Akce</th>
                         </tr>
                     </thead>
@@ -31,6 +32,13 @@
                         <tr>
                             <td>{{ $answer->id }}</td>
                             <td>{{ $answer->title }}</td>
+                            <td>
+                                @if(empty($answer->budgetStateChange))
+                                    <a href="{{ route("admin.questions.answers.budget_state_change.create", [$question, $answer]) }}">Přidat změnu stavu rozpočtu</a>
+                                @else
+                                    <a href="{{ route("admin.questions.answers.budget_state_change.show", [$question, $answer, $answer->budgetStateChange]) }}">Zobrazit změnu stavu rozpočtu</a>
+                                @endif
+                            </td>
                             <td class="actions-col">
                                 <x-admin.button-icon-show :href="route('admin.questions.answers.show', [$question, $answer])" />
                                 <x-admin.button-icon-edit :href="route('admin.questions.answers.edit', [$question, $answer])" />

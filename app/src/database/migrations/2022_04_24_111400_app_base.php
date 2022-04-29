@@ -92,18 +92,27 @@ return new class extends Migration
             $table->string('short_name', 50);
         });
 
+        Schema::create('educations', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string('name', 100);
+        });
+
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->boolean('is_finished');
-            $table->tinyInteger('age', false, true);
-            $table->enum('education', ['none', 'elementary', 'secondary', 'university']);
+            $table->smallInteger('age', false, true);
             $table->foreignId('region_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreignId('party_id')
                 ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('education_id')
+                ->constrained('educations') // Laravel unable to handle plural of education
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -138,6 +147,7 @@ return new class extends Migration
         Schema::dropIfExists('budget_state_changes');
         Schema::dropIfExists('regions');
         Schema::dropIfExists('parties');
+        Schema::dropIfExists('educations');
         Schema::dropIfExists('quizzes');
         Schema::dropIfExists('quiz_answers');
     }

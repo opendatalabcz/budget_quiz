@@ -8,10 +8,19 @@
     </x-slot:description>
 
     <h4>Titulek</h4>
-    {{ $question->title }}
+    <div class="item-value mb-3">{{ $answer->title }}</div>
 
     <h4>Popis</h4>
-    {{ $question->description }}
+    <div class="item-value mb-3">{{ $answer->description }}</div>
+
+    <h4>Změna stavu rozpočtu</h4>
+    <div class="item-value mb-3">
+        @if(empty($answer->budgetStateChange))
+            <a href="{{ route("admin.questions.answers.budget_state_change.create", [$question, $answer]) }}">Přidat změnu stavu rozpočtu</a>
+        @else
+            <a href="{{ route("admin.questions.answers.budget_state_change.show", [$question, $answer, $answer->budgetStateChange]) }}">Zobrazit změnu stavu rozpočtu</a>
+        @endif
+    </div>
 
     <div class="mt-3">
         <x-admin.button-edit :href="route('admin.questions.answers.edit', [$question, $answer])" />
