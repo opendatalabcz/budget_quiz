@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\BudgetStateChangeRequest;
 use App\Models\Answer;
-use App\Models\BudgetCapitol;
+use App\Models\BudgetChapter;
 use App\Models\BudgetStateChange;
 use App\Models\Question;
 
@@ -19,7 +19,7 @@ class BudgetStateChangeController extends Controller
      */
     public function create(Question $question, Answer $answer)
     {
-        // check capitol present
+        // check chapter present
 
         if (!empty($answer->budgetStateChange)) {
             return redirect()->route('admin.questions.show', $question)
@@ -29,7 +29,7 @@ class BudgetStateChangeController extends Controller
         return view('admin.budget_state_changes.create-or-update', [
             'question' => $question,
             'answer' => $answer,
-            'budgetCapitols' => BudgetCapitol::all(),
+            'budgetChapters' => BudgetChapter::all(),
             'budgetStateChange' => new BudgetStateChange
         ]);
     }
@@ -57,7 +57,7 @@ class BudgetStateChangeController extends Controller
         $budgetStateChange->second_year = $validated['budget_state_change_second_year'];
         $budgetStateChange->third_year = $validated['budget_state_change_third_year'];
 
-        $budgetStateChange->budgetCapitol()->associate($validated['budget_state_change_capitol_id']);
+        $budgetStateChange->budgetChapter()->associate($validated['budget_state_change_chapter_id']);
         $answer->budgetStateChange()->save($budgetStateChange);
 
         return redirect()->route('admin.questions.answers.show', [$question, $answer])
@@ -92,7 +92,7 @@ class BudgetStateChangeController extends Controller
         return view('admin.budget_state_changes.create-or-update', [
             'question' => $question,
             'answer' => $answer,
-            'budgetCapitols' => BudgetCapitol::all(),
+            'budgetChapters' => BudgetChapter::all(),
             'budgetStateChange' => $budgetStateChange
         ]);
     }
@@ -115,7 +115,7 @@ class BudgetStateChangeController extends Controller
         $budgetStateChange->second_year = $validated['budget_state_change_second_year'];
         $budgetStateChange->third_year = $validated['budget_state_change_third_year'];
 
-        $budgetStateChange->budgetCapitol()->associate($validated['budget_state_change_capitol_id']);
+        $budgetStateChange->budgetChapter()->associate($validated['budget_state_change_chapter_id']);
         $answer->budgetStateChange()->save($budgetStateChange);
 
         return redirect()->route('admin.questions.answers.budget_state_change.show', [$question, $answer, $budgetStateChange])

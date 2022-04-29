@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $expense_first_year
  * @property $expense_second_year
  * @property $expense_third_year
- * @property $budget_capitol_id
+ * @property $budget_chapter_id
  */
 class BudgetState extends Model
 {
@@ -32,8 +32,8 @@ class BudgetState extends Model
         'expense_third_year'
     ];
 
-    public function capitol()
+    public function budgetChapter()
     {
-        return $this->belongsTo(BudgetCapitol::class);
+        return $this->belongsTo(BudgetChapter::class);
     }
 }

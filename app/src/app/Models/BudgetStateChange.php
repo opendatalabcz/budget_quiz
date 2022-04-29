@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $first_year
  * @property $second_year
  * @property $third_year
- * @property $budget_capitol_id
+ * @property $budget_chapter_id
  * @property $answer_id
  */
 class BudgetStateChange extends Model
@@ -36,8 +36,8 @@ class BudgetStateChange extends Model
         return $this->belongsTo(Answer::class);
     }
 
-    public function budgetCapitol()
+    public function budgetChapter()
     {
-        return $this->belongsTo(BudgetCapitol::class);
+        return $this->belongsTo(BudgetChapter::class);
     }
 }

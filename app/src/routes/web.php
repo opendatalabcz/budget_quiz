@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\BudgetCapitolController;
+use App\Http\Controllers\Admin\BudgetChapterController;
 use App\Http\Controllers\Admin\BudgetStateChangeController;
 use App\Http\Controllers\Admin\BudgetStateController;
 use App\Http\Controllers\Admin\EducationController;
@@ -48,8 +48,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
    Route::resource('educations', EducationController::class)->except('show');
 
-   Route::resource('budget_capitols', BudgetCapitolController::class)->except('show');
-   Route::resource('budget_capitols.budget_state', BudgetStateController::class)->except('index');
+   Route::resource('budget_chapters', BudgetChapterController::class)->except('show');
+   Route::resource('budget_chapters.budget_state', BudgetStateController::class)->except('index');
 
    Route::resource('questions', QuestionController::class);
    Route::resource('questions.answers', AnswerController::class)->except('index');

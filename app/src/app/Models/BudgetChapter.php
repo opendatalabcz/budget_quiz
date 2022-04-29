@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $number
  * @property $name
  */
-class BudgetCapitol extends Model
+class BudgetChapter extends Model
 {
     /**
      * The attributes that are mass assignable.

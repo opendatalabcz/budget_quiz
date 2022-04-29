@@ -17,7 +17,7 @@
             <input type="text" name="party_short_name"
                    value="{{ old('party_short_name', $party->short_name) }}"
                    id="party-short-name-input"
-                   @class(['form-control', 'is-invalid' => $errors->has('budget_capitol_number')])
+                   @class(['form-control', 'is-invalid' => $errors->has('party_short_name')])
                    maxlength="50" required>
             @error('party_short_name')
                 <div class="invalid-feedback">
@@ -31,7 +31,7 @@
             <input type="text" name="party_name"
                    value="{{ old('party_name', $party->name) }}"
                    id="party-name-input"
-                   @class(['form-control', 'is-invalid' => $errors->has('budget_capitol_number')])
+                   @class(['form-control', 'is-invalid' => $errors->has('party_name')])
                    maxlength="150" required>
             @error('party_name')
             <div class="invalid-feedback">

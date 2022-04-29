@@ -8,10 +8,10 @@
     </x-slot:title>
 
     <x-slot:description>
-        Pro kapitolu státního rozpočtu ID {{ $budgetCapitol->id }} ({{ $budgetCapitol->number }} – {{ $budgetCapitol->name }})
+        Pro kapitolu státního rozpočtu ID {{ $budgetChapter->id }} ({{ $budgetChapter->number }} – {{ $budgetChapter->name }})
     </x-slot:description>
 
-    <form action="@if($budgetState->exists) {{ route('admin.budget_capitols.budget_state.update', [$budgetCapitol, $budgetState])  }} @else {{ route('admin.budget_capitols.budget_state.store', $budgetCapitol) }} @endif" method="POST">
+    <form action="@if($budgetState->exists) {{ route('admin.budget_chapters.budget_state.update', [$budgetChapter, $budgetState])  }} @else {{ route('admin.budget_chapters.budget_state.store', $budgetChapter) }} @endif" method="POST">
         @csrf
         @if($budgetState->exists)
             @method('PATCH')

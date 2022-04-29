@@ -8,7 +8,7 @@
     </x-slot:description>
 
     <h4>Kapitola rozpočtu</h4>
-    <div class="item-value mb-3">{{ $budgetStateChange->budgetCapitol->number }} – {{ $budgetStateChange->budgetCapitol->name }}</div>
+    <div class="item-value mb-3">{{ $budgetStateChange->budgetChapter->number }} – {{ $budgetStateChange->budgetChapter->name }}</div>
 
     <h4>Typ</h4>
     <div class="item-value mb-3">{{ $budgetStateChange->is_increase ? 'Zvýšení' : 'Snížení'}} {{ $budgetStateChange->is_expense ? 'výdajů' : 'příjmů' }}</div>

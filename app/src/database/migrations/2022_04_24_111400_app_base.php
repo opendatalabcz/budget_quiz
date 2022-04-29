@@ -20,7 +20,7 @@ return new class extends Migration
             $table->rememberToken();
         });
 
-        Schema::create('budget_capitols', function (Blueprint $table) {
+        Schema::create('budget_chapters', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->integer('number');
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->integer('expense_first_year', false, true);
             $table->integer('expense_second_year', false, true);
             $table->integer('expense_third_year', false, true);
-            $table->foreignId('budget_capitol_id')
+            $table->foreignId('budget_chapter_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
@@ -69,7 +69,7 @@ return new class extends Migration
             $table->integer('first_year', false, true);
             $table->integer('second_year', false, true);
             $table->integer('third_year', false, true);
-            $table->foreignId('budget_capitol_id')
+            $table->foreignId('budget_chapter_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
@@ -141,7 +141,7 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('budget_capitols');
+        Schema::dropIfExists('budget_chapters');
         Schema::dropIfExists('budget_states');
         Schema::dropIfExists('questions');
         Schema::dropIfExists('answers');

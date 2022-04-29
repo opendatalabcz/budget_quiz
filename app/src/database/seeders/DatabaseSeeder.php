@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             ['created_at' => 'now()', 'updated_at' => 'now()', 'name' => 'Vysokoškolské vzdělání']
         ]);
 
-        DB::table('budget_capitols')->insert([
+        DB::table('budget_chapters')->insert([
             ['created_at' => 'now()', 'updated_at' => 'now()', 'number' => 301, 'name' => 'Kancelář prezidenta republiky'],
             ['created_at' => 'now()', 'updated_at' => 'now()', 'number' => 302, 'name' => 'Poslanecká sněmovna Parlamentu'],
             ['created_at' => 'now()', 'updated_at' => 'now()', 'number' => 303, 'name' => 'Senát Parlamentu'],

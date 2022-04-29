@@ -18,17 +18,17 @@
         @endif
 
         <div class="mb-3">
-            <label for="budget-state-change-capitol-id" class="form-label">Kapitola rozpočtu</label>
-            <select name="budget_state_change_capitol_id" id="budget-state-change-capitol-id"
-                    @class(['form-select', 'is-invalid' => $errors->has('budget_state_change_capitol_id')])>
-                @foreach($budgetCapitols as $budgetCapitol)
-                    <option value="{{ $budgetCapitol->id }}"
-                            @selected(old('budget_state_change_capitol_id', $budgetStateChange->budget_capitol_id) == $budgetCapitol->id)>
-                        {{ $budgetCapitol->number }} – {{ $budgetCapitol->name }}
+            <label for="budget-state-change-chapter-id" class="form-label">Kapitola rozpočtu</label>
+            <select name="budget_state_change_chapter_id" id="budget-state-change-chapter-id"
+                    @class(['form-select', 'is-invalid' => $errors->has('budget_state_change_chapter_id')])>
+                @foreach($budgetChapters as $budgetChapter)
+                    <option value="{{ $budgetChapter->id }}"
+                            @selected(old('budget_state_change_chapter_id', $budgetStateChange->budget_chapter_id) == $budgetChapter->id)>
+                        {{ $budgetChapter->number }} – {{ $budgetChapter->name }}
                     </option>
                 @endforeach
             </select>
-            @error('budget_state_change_capitol_id')
+            @error('budget_state_change_chapter_id')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>

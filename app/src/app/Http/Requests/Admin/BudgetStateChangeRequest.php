@@ -24,10 +24,10 @@ class BudgetStateChangeRequest extends FormRequest
     public function rules()
     {
         return [
-            'budget_state_change_capitol_id' => [
+            'budget_state_change_chapter_id' => [
                 'bail',
                 'required',
-                'exists:\App\Models\BudgetCapitol,id'
+                'exists:\App\Models\BudgetChapter,id'
             ],
             'budget_state_change_first_year' => [
                 'bail',
@@ -58,8 +58,8 @@ class BudgetStateChangeRequest extends FormRequest
     public function messages()
     {
         return [
-            'budget_state_change_capitol_id.required' => 'Výdaj pro první rok musí být zadán',
-            'budget_state_change_capitol_id.exists' => 'Zvolená kapitola neexistuje, zkuste obnovit stránku',
+            'budget_state_change_chapter_id.required' => 'Výdaj pro první rok musí být zadán',
+            'budget_state_change_chapter_id.exists' => 'Zvolená kapitola neexistuje, zkuste obnovit stránku',
             'budget_state_change_first_year.required' => 'Příjem pro první rok musí být zadán',
             'budget_state_change_first_year.min' => 'Příjem pro první rok musí být nezáporné číslo',
             'budget_state_change_first_year.numeric' => 'Příjem pro první rok musí být číslo',

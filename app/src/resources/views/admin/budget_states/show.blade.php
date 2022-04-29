@@ -4,7 +4,7 @@
     </x-slot:title>
 
     <x-slot:description>
-        Pro kapitolu státního rozpočtu ID {{ $budgetCapitol->id }} ({{ $budgetCapitol->number }} – {{ $budgetCapitol->name }})
+        Pro kapitolu státního rozpočtu ID {{ $budgetChapter->id }} ({{ $budgetChapter->number }} – {{ $budgetChapter->name }})
     </x-slot:description>
 
     <h4>Příjem 1. rok</h4>
@@ -26,8 +26,8 @@
     <div class="item-value mb-3">{{ $budgetState->expense_third_year }}</div>
 
     <div class="mt-3">
-        <x-admin.button-edit :href="route('admin.budget_capitols.budget_state.edit', [$budgetCapitol, $budgetState])" />
-        <x-admin.button-delete :href="route('admin.budget_capitols.budget_state.destroy', [$budgetCapitol, $budgetState])" />
-        <x-admin.button-back :href="route('admin.budget_capitols.index')">Zpět na výpis kapitol</x-admin.button-back>
+        <x-admin.button-edit :href="route('admin.budget_chapters.budget_state.edit', [$budgetChapter, $budgetState])" />
+        <x-admin.button-delete :href="route('admin.budget_chapters.budget_state.destroy', [$budgetChapter, $budgetState])" />
+        <x-admin.button-back :href="route('admin.budget_chapters.index')">Zpět na výpis kapitol</x-admin.button-back>
     </div>
 </x-admin.layout>
