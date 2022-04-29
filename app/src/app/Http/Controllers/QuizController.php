@@ -31,7 +31,6 @@ class QuizController extends Controller
         $quiz = new Quiz;
 
         $quiz->hash = $hash;
-        $quiz->is_finished = false;
         $quiz->age = $validated['quiz_age'];
 
         $quiz->region()->associate($validated['quiz_region']);

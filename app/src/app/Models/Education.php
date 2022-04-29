@@ -4,6 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property $id
+ * @property $created_at
+ * @property $updated_at
+ * @property $name
+ */
 class Education extends Model
 {
     /**
@@ -12,6 +18,13 @@ class Education extends Model
      * @var string
      */
     protected $table = 'educations';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name'];
 
     public function quizzes()
     {

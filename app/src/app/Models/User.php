@@ -4,6 +4,12 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @property $id
+ * @property $username
+ * @property $password
+ * @property $remember_token
+ */
 class User extends Authenticatable
 {
     /**
@@ -12,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'password',
     ];
 
