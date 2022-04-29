@@ -29,7 +29,7 @@ Route::view('/', 'welcome')->name('index');
 Route::controller(QuizController::class)->group(function() {
     Route::get('quiz', 'index')->name('quiz.index');
     Route::post('quiz', 'store')->name('quiz.store');
-    Route::get('quiz/{quiz}', 'show')->name('quiz.show');
+    Route::get('quiz/{quiz:hash}', 'show')->name('quiz.show');
     Route::get('results', 'results')->name('results');
 });
 

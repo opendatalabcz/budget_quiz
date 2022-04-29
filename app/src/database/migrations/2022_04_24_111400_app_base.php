@@ -101,7 +101,8 @@ return new class extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->boolean('is_finished');
+            $table->string('hash')->nullable();
+            $table->boolean('is_finished')->default(false);
             $table->smallInteger('age', false, true);
             $table->foreignId('region_id')
                 ->constrained()
