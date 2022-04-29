@@ -55,7 +55,13 @@
                     @class(['form-select', 'is-invalid' => $errors->has('quiz_party')])
                     required>
                 @foreach($parties as $party)
-                    <option value="{{ $party->id }}" @selected(old('quiz_party') == $party->id)>{{ $party->short_name }} – {{ $party->name }}</option>
+                    <option value="{{ $party->id }}" @selected(old('quiz_party') == $party->id)>
+                        @if(empty($party->name))
+                            {{ $party->short_name }}
+                        @else
+                            {{ $party->short_name }} – {{ $party->name }}
+                        @endif
+                    </option>
                 @endforeach
             </select>
             @error('quiz_party')
