@@ -22,6 +22,15 @@ export default class QuizBase extends React.Component {
     componentDidMount() {
         window.axios.get('/api/quiz/data')
             .then((response) => {
+                if (!response.data ||
+                    !response.data.educations || response.data.educations.length === 0 ||
+                    !response.data.parties || response.data.parties.length === 0 ||
+                    !response.data.questions || response.data.questions.length === 0 ||
+                    !response.data.regions || response.data.regions.length === 0 ||
+                    !response.data.budget_states || response.data.budget_states.length === 0) {
+                    this.error("Nepovedlo se načíst data aplikace");
+                }
+
                 this.setState({
                     data: {
                         educations: response.data.educations,

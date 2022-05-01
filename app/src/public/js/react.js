@@ -1003,6 +1003,10 @@ var QuizBase = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       window.axios.get('/api/quiz/data').then(function (response) {
+        if (!response.data || !response.data.educations || response.data.educations.length === 0 || !response.data.parties || response.data.parties.length === 0 || !response.data.questions || response.data.questions.length === 0 || !response.data.regions || response.data.regions.length === 0 || !response.data.budget_states || response.data.budget_states.length === 0) {
+          _this2.error("Nepovedlo se načíst data aplikace");
+        }
+
         _this2.setState({
           data: {
             educations: response.data.educations,
