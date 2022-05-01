@@ -18,7 +18,7 @@
                    value="{{ old('party_short_name', $party->short_name) }}"
                    id="party-short-name-input"
                    @class(['form-control', 'is-invalid' => $errors->has('party_short_name')])
-                   maxlength="50" required>
+                   maxlength="50">
             @error('party_short_name')
                 <div class="invalid-feedback">
                     {{ $message }}

@@ -36,7 +36,6 @@ class PartyRequest extends FormRequest
         return [
             'party_short_name' => [
                 'bail',
-                'required',
                 'max:50',
                 $unique_short_name
             ],

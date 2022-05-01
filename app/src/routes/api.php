@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\QuizController;
+use App\Http\Controllers\Api\QuizController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(QuizController::class)->group(function() {
-
+Route::prefix('quiz')->controller(QuizController::class)->group(function() {
+    Route::get('data', 'data');
+    Route::post('create', 'store');
+    Route::post('answer', 'answer');
 });

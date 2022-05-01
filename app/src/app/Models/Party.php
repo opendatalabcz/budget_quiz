@@ -30,7 +30,7 @@ class Party extends Model
         $prepend = '';
 
         if (!empty($this->short_name)) {
-            $prepend .= '('. $this->short_name .') –';
+            $prepend .= '('. $this->short_name .') – ';
         }
 
         return $prepend.$this->name;
