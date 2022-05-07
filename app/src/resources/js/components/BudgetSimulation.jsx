@@ -7,39 +7,47 @@ export default class BudgetSimulation extends React.Component {
         const change_third_year = { income: null, expense: null };
 
         if (this.props.current_budget_state_change !== null) {
-            const state_coefficient = this.props.current_budget_state_change.is_increase ? 1 : -1;
+            change_first_year.income = this.props.current_budget_state_change.income_first_year;
+            change_first_year.expense = this.props.current_budget_state_change.expense_first_year;
 
-            if (this.props.current_budget_state_change.is_expense) {
-                change_first_year.expense = state_coefficient * this.props.current_budget_state_change.first_year;
-                change_second_year.expense = state_coefficient * this.props.current_budget_state_change.second_year;
-                change_third_year.expense = state_coefficient * this.props.current_budget_state_change.third_year;
+            change_second_year.income = this.props.current_budget_state_change.income_second_year;
+            change_second_year.expense = this.props.current_budget_state_change.expense_second_year;
 
-            } else {
-                change_first_year.income = state_coefficient * this.props.current_budget_state_change.first_year;
-                change_second_year.income = state_coefficient * this.props.current_budget_state_change.second_year;
-                change_third_year.income = state_coefficient * this.props.current_budget_state_change.third_year;
-            }
+            change_third_year.income = this.props.current_budget_state_change.income_third_year;
+            change_third_year.expense = this.props.current_budget_state_change.expense_third_year;
         }
 
         return (
           <div className="simulation">
-              <h4>První rok</h4>
-              <BudgetSimulationRow income={this.props.budget.income_first_year}
-                                   expense={this.props.budget.expense_first_year}
-                                   change={change_first_year}
-                                   formatter={this.props.formatter} />
+              <table className="table table-hover">
+                  <thead>
+                    <th>Rok</th>
+                    <th>Příjmy</th>
+                    <th>Výdaje</th>
+                    <th>Výsledek rozpočtu</th>
+                  </thead>
+                  <tbody>
+                      <BudgetSimulationRow year="2022"
+                                           income={this.props.budget.income_first_year}
+                                           expense={this.props.budget.expense_first_year}
+                                           change={change_first_year}
+                                           formatter={this.props.formatter}
+                                           signFormatter={this.props.signFormatter} />
 
-              <h4>Druhý rok</h4>
-              <BudgetSimulationRow income={this.props.budget.income_second_year}
-                                   expense={this.props.budget.expense_second_year}
-                                   change={change_second_year}
-                                   formatter={this.props.formatter} />
-
-              <h4>Třetí rok</h4>
-              <BudgetSimulationRow income={this.props.budget.income_third_year}
-                                   expense={this.props.budget.expense_third_year}
-                                   change={change_third_year}
-                                   formatter={this.props.formatter} />
+                      <BudgetSimulationRow year="2023"
+                                           income={this.props.budget.income_second_year}
+                                           expense={this.props.budget.expense_second_year}
+                                           change={change_second_year}
+                                           formatter={this.props.formatter}
+                                           signFormatter={this.props.signFormatter} />
+                      <BudgetSimulationRow year="2024"
+                                           income={this.props.budget.income_third_year}
+                                           expense={this.props.budget.expense_third_year}
+                                           change={change_third_year}
+                                           formatter={this.props.formatter}
+                                           signFormatter={this.props.signFormatter} />
+                  </tbody>
+              </table>
           </div>
         );
     }
@@ -59,32 +67,28 @@ class BudgetSimulationRow extends React.Component {
         }
 
         return (
-            <div className="row">
-                <div className="col-md-4">
-                    <h5>Příjmy</h5>
+            <tr>
+                <td>{this.props.year}</td>
+                <td>
                     <p>{this.props.formatter.format(this.props.income)}</p>
-
                     {this.props.change.income &&
-                        <p className="change">{this.props.formatter.format(this.props.change.income)}</p>
+                        <p className="text-info">{this.props.signFormatter.format(this.props.change.income)}</p>
                     }
-                </div>
-                <div className="col-md-4">
-                    <h5>Výdaje</h5>
+                </td>
+                <td>
                     <p>{this.props.formatter.format(this.props.expense)}</p>
-
                     {this.props.change.expense &&
-                        <p className="change">{this.props.formatter.format(this.props.change.expense)}</p>
+                        <p className="text-info">{this.props.signFormatter.format(this.props.change.expense)}</p>
                     }
-                </div>
-                <div className="col-md-4">
-                    <h5>Stav rozpočtu</h5>
+                </td>
+                <td>
                     <p>{this.props.formatter.format(result)}</p>
 
                     {this.props.change.expense &&
-                        <p className="change">{this.props.formatter.format(result + change_result)}</p>
+                        <p className="text-info">{this.props.signFormatter.format(result + change_result)}</p>
                     }
-                </div>
-            </div>
+                </td>
+            </tr>
         );
     }
 }

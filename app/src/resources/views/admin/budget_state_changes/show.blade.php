@@ -10,17 +10,34 @@
     <h4>Kapitola rozpočtu</h4>
     <div class="item-value mb-3">{{ $budgetStateChange->budgetChapter->number }} – {{ $budgetStateChange->budgetChapter->name }}</div>
 
-    <h4>Typ</h4>
-    <div class="item-value mb-3">{{ $budgetStateChange->is_increase ? 'Zvýšení' : 'Snížení'}} {{ $budgetStateChange->is_expense ? 'výdajů' : 'příjmů' }}</div>
 
-    <h4>Změna 1. rok</h4>
-    <div class="item-value mb-3">{{ $budgetStateChange->first_year }}</div>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Změna příjmů</h3>
 
-    <h4>Změna 2. rok</h4>
-    <div class="item-value mb-3">{{ $budgetStateChange->second_year }}</div>
+            <h4>{{ config('app.first_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetStateChange->income_first_year, 0, null, ' ') }}&nbsp;Kč</div>
 
-    <h4>Změna 3. rok</h4>
-    <div class="item-value mb-3">{{ $budgetStateChange->third_year }}</div>
+            <h4>{{ config('app.second_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetStateChange->income_second_year, 0, null, ' ') }}&nbsp;Kč</div>
+
+            <h4>{{ config('app.third_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetStateChange->income_third_year, 0, null, ' ') }}&nbsp;Kč</div>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Změna výdajů</h3>
+
+            <h4>{{ config('app.first_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetStateChange->expense_first_year, 0, null, ' ') }}&nbsp;Kč</div>
+
+            <h4>{{ config('app.second_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetStateChange->expense_second_year, 0, null, ' ') }}&nbsp;Kč</div>
+
+            <h4>{{ config('app.third_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetStateChange->expense_third_year, 0, null, ' ') }}&nbsp;Kč</div>
+        </div>
+    </div>
 
     <div class="mt-3">
         <x-admin.button-edit :href="route('admin.questions.answers.budget_state_change.edit', [$question, $answer, $budgetStateChange])" />

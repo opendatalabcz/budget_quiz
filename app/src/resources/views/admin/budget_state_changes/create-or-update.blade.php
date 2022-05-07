@@ -35,66 +35,119 @@
             @enderror
         </div>
 
-        <div class="form-check form-switch mb-3">
-            <input class="form-check-input" type="checkbox" name="budget_state_change_is_increase"
-                   value="on" role="switch"
-                   id="budget-state-change-is-increase-input"
-                   @checked(old('budget_state_change_is_increase', $budgetStateChange->is_increase ? 'on' : false) == 'on')>
-            <label class="form-check-label" for="budget-state-change-is-increase-input">
-                Tato změna je přičtení k výsledku simulace
-            </label>
-        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Změna příjmů</h3>
+                <p>Pro snížení příjmů zadejte číslo se záporným znamínkem (-), pro zvýšení zadejte číslo bez znamínka.</p>
 
-        <div class="form-check form-switch mb-3">
-            <input class="form-check-input" type="checkbox" name="budget_state_change_is_expense"
-                   value="on" role="switch"
-                   id="budget-state-change-is-expense-input"
-                   @checked(old('budget_state_change_is_expense', $budgetStateChange->is_expense ? 'on' : false) == 'on')>
-            <label class="form-check-label" for="budget-state-change-is-expense-input">
-                Tato změna je výdaj
-            </label>
-        </div>
+                <label for="budget-state-change-income-first-year-input" class="form-label">{{ config('app.first_year') }}</label>
+                <div class="input-group mb-3">
+                    <input type="number" name="budget_state_change_income_first_year"
+                           value="{{ old('budget_state_change_income_first_year', $budgetStateChange->income_first_year) }}"
+                           id="budget-state-change-income-first-year-input"
+                           @class(['form-control', 'is-invalid' => $errors->has('budget_state_change_income_first_year')])
+                           required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Kč</span>
+                    </div>
+                    @error('budget_state_change_income_first_year')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
 
-        <div class="mb-3">
-            <label for="budget-state-change-first-year-input" class="form-label">Změna 1. rok</label>
-            <input type="number" name="budget_state_change_first_year"
-                   value="{{ old('budget_state_change_first_year', $budgetStateChange->first_year) }}"
-                   id="budget-state-change-first-year-input"
-                   @class(['form-control', 'is-invalid' => $errors->has('budget_state_change_first_year')])
-                   min="0" required>
-            @error('budget_state_change_first_year')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="budget-state-change-first-year-input" class="form-label">Změna 2. rok</label>
-            <input type="number" name="budget_state_change_second_year"
-                   value="{{ old('budget_state_change_second_year', $budgetStateChange->second_year) }}"
-                   id="budget-state-change-second-year-input"
-                   @class(['form-control', 'is-invalid' => $errors->has('budget_state_change_second_year')])
-                   min="0" required>
-            @error('budget_state_change_second_year')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="budget-state-change-first-year-input" class="form-label">Změna 3. rok</label>
-            <input type="number" name="budget_state_change_third_year"
-                   value="{{ old('budget_state_change_third_year', $budgetStateChange->third_year) }}"
-                   id="budget-state-change-third-year-input"
-                   @class(['form-control', 'is-invalid' => $errors->has('budget_state_change_third_year')])
-                   min="0" required>
-            @error('budget_state_change_third_year')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
-        </div>
+                <label for="budget-state-change-income-second-year-input" class="form-label">{{ config('app.second_year') }}</label>
+                <div class="input-group mb-3">
+                    <input type="number" name="budget_state_change_income_second_year"
+                           value="{{ old('budget_state_change_income_second_year', $budgetStateChange->income_second_year) }}"
+                           id="budget-state-change-income-second-year-input"
+                           @class(['form-control', 'is-invalid' => $errors->has('budget_state_change_income_second_year')])
+                           required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Kč</span>
+                    </div>
+                    @error('budget_state_change_income_second_year')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
 
+                <label for="budget-state-change-income-third-year-input" class="form-label">{{ config('app.third_year') }}</label>
+                <div class="input-group mb-3">
+                    <input type="number" name="budget_state_change_income_third_year"
+                           value="{{ old('budget_state_change_income_third_year', $budgetStateChange->income_third_year) }}"
+                           id="budget-state-change-income-third-year-input"
+                           @class(['form-control', 'is-invalid' => $errors->has('budget_state_change_income_third_year')])
+                           required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Kč</span>
+                    </div>
+                    @error('budget_state_change_income_third_year')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Změna výdajů</h3>
+                <p>Pro snížení výdajů zadejte číslo se záporným znamínkem (-), pro zvýšení zadejte číslo bez znamínka.</p>
+
+                <label for="budget-state-change-expense-first-year-input" class="form-label">{{ config('app.first_year') }}</label>
+                <div class="input-group mb-3">
+                    <input type="number" name="budget_state_change_expense_first_year"
+                           value="{{ old('budget_state_change_expense_first_year', $budgetStateChange->expense_first_year) }}"
+                           id="budget-state-change-expense-first-year-input"
+                           @class(['form-control', 'is-invalid' => $errors->has('budget_state_change_expense_first_year')])
+                           required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Kč</span>
+                    </div>
+                    @error('budget_state_change_expense_first_year')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <label for="budget-state-change-expense-second-year-input" class="form-label">{{ config('app.second_year') }}</label>
+                <div class="input-group mb-3">
+                    <input type="number" name="budget_state_change_expense_second_year"
+                           value="{{ old('budget_state_change_expense_second_year', $budgetStateChange->expense_second_year) }}"
+                           id="budget-state-change-expense-second-year-input"
+                           @class(['form-control', 'is-invalid' => $errors->has('budget_state_change_expense_second_year')])
+                           required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Kč</span>
+                    </div>
+                    @error('budget_state_change_expense_second_year')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <label for="budget-state-change-expense-third-year-input" class="form-label">{{ config('app.third_year') }}</label>
+                <div class="input-group mb-3">
+                    <input type="number" name="budget_state_change_expense_third_year"
+                           value="{{ old('budget_state_change_expense_third_year', $budgetStateChange->expense_third_year) }}"
+                           id="budget-state-change-expense-third-year-input"
+                           @class(['form-control', 'is-invalid' => $errors->has('budget_state_change_expense_third_year')])
+                           required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Kč</span>
+                    </div>
+                    @error('budget_state_change_expense_third_year')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+        </div>
 
         <button type="submit" class="btn btn-primary">@if($budgetStateChange->exists) Upravit @else Přidat @endif</button>
     </form>

@@ -83,17 +83,14 @@ export default class Quiz extends React.Component {
                 let expense_third_year_change = 0;
 
                 if (this.state.current_budget_state_change) {
-                    const state_coefficient = this.state.current_budget_state_change.is_increase ? 1 : -1;
+                    income_first_year_change = this.state.current_budget_state_change.income_first_year;
+                    expense_first_year_change = this.state.current_budget_state_change.expense_first_year;
 
-                    if (this.state.current_budget_state_change.is_expense) {
-                        expense_first_year_change = state_coefficient * this.state.current_budget_state_change.first_year;
-                        expense_second_year_change = state_coefficient * this.state.current_budget_state_change.second_year;
-                        expense_third_year_change = state_coefficient * this.state.current_budget_state_change.third_year;
-                    } else {
-                        income_first_year_change = state_coefficient * this.state.current_budget_state_change.first_year;
-                        income_second_year_change = state_coefficient * this.state.current_budget_state_change.second_year;
-                        income_third_year_change = state_coefficient * this.state.current_budget_state_change.third_year;
-                    }
+                    income_second_year_change = this.state.current_budget_state_change.income_second_year;
+                    expense_second_year_change = this.state.current_budget_state_change.expense_second_year;
+
+                    income_third_year_change = this.state.current_budget_state_change.income_third_year;
+                    expense_third_year_change = this.state.current_budget_state_change.expense_third_year;
                 }
 
                 this.setState((state, _) => ({
@@ -126,9 +123,17 @@ export default class Quiz extends React.Component {
             maximumFractionDigits: 3
         });
 
+        const signFormatter = Intl.NumberFormat('cs', {
+            notation: 'compact',
+            signDisplay: 'exceptZero',
+            style: 'currency',
+            currency: 'CZK',
+            maximumFractionDigits: 3
+        });
+
         return (
             <div className="quiz">
-                <Question question={question} onSelectAnswer={this.selectAnswer} formatter={formatter}/>
+                <Question question={question} onSelectAnswer={this.selectAnswer} signFormatter={signFormatter}/>
 
                 {this.state.error_message && (
                     <div className="error_message alert alert-danger">
@@ -140,7 +145,8 @@ export default class Quiz extends React.Component {
 
                 <BudgetSimulation budget={this.state.budget}
                                   current_budget_state_change={this.state.current_budget_state_change}
-                                  formatter={formatter} />
+                                  formatter={formatter}
+                                  signFormatter={signFormatter} />
             </div>
         );
     }

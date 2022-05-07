@@ -64,11 +64,12 @@ return new class extends Migration
         Schema::create('budget_state_changes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->boolean('is_increase');
-            $table->boolean('is_expense');
-            $table->bigInteger('first_year', false, true);
-            $table->bigInteger('second_year', false, true);
-            $table->bigInteger('third_year', false, true);
+            $table->bigInteger('income_first_year', false, true);
+            $table->bigInteger('expense_first_year', false, true);
+            $table->bigInteger('income_second_year', false, true);
+            $table->bigInteger('expense_second_year', false, true);
+            $table->bigInteger('income_third_year', false, true);
+            $table->bigInteger('expense_third_year', false, true);
             $table->foreignId('budget_chapter_id')
                 ->constrained()
                 ->onUpdate('cascade')

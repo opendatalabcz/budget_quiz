@@ -51,11 +51,12 @@ class BudgetStateChangeController extends Controller
         $validated = $request->validated();
         $budgetStateChange = new BudgetStateChange();
 
-        $budgetStateChange->is_increase = $request->boolean('budget_state_change_is_increase');
-        $budgetStateChange->is_expense = $request->boolean('budget_state_change_is_expense');
-        $budgetStateChange->first_year = $validated['budget_state_change_first_year'];
-        $budgetStateChange->second_year = $validated['budget_state_change_second_year'];
-        $budgetStateChange->third_year = $validated['budget_state_change_third_year'];
+        $budgetStateChange->income_first_year = $validated['budget_state_change_income_first_year'];
+        $budgetStateChange->income_second_year = $validated['budget_state_change_income_second_year'];
+        $budgetStateChange->income_third_year = $validated['budget_state_change_income_third_year'];
+        $budgetStateChange->expense_first_year = $validated['budget_state_change_expense_first_year'];
+        $budgetStateChange->expense_second_year = $validated['budget_state_change_expense_second_year'];
+        $budgetStateChange->expense_third_year = $validated['budget_state_change_expense_third_year'];
 
         $budgetStateChange->budgetChapter()->associate($validated['budget_state_change_chapter_id']);
         $answer->budgetStateChange()->save($budgetStateChange);
@@ -109,11 +110,12 @@ class BudgetStateChangeController extends Controller
     {
         $validated = $request->validated();
 
-        $budgetStateChange->is_increase = $request->boolean('budget_state_change_is_increase');
-        $budgetStateChange->is_expense = $request->boolean('budget_state_change_is_expense');
-        $budgetStateChange->first_year = $validated['budget_state_change_first_year'];
-        $budgetStateChange->second_year = $validated['budget_state_change_second_year'];
-        $budgetStateChange->third_year = $validated['budget_state_change_third_year'];
+        $budgetStateChange->income_first_year = $validated['budget_state_change_income_first_year'];
+        $budgetStateChange->income_second_year = $validated['budget_state_change_income_second_year'];
+        $budgetStateChange->income_third_year = $validated['budget_state_change_income_third_year'];
+        $budgetStateChange->expense_first_year = $validated['budget_state_change_expense_first_year'];
+        $budgetStateChange->expense_second_year = $validated['budget_state_change_expense_second_year'];
+        $budgetStateChange->expense_third_year = $validated['budget_state_change_expense_third_year'];
 
         $budgetStateChange->budgetChapter()->associate($validated['budget_state_change_chapter_id']);
         $answer->budgetStateChange()->save($budgetStateChange);

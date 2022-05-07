@@ -15,11 +15,12 @@ class BudgetStateChangeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'is_increase' => $this->is_increase,
-            'is_expense' => $this->is_expense,
-            'first_year' => $this->first_year,
-            'second_year' => $this->second_year,
-            'third_year' => $this->third_year,
+            'income_first_year' => $this->income_first_year,
+            'income_second_year' => $this->income_second_year,
+            'income_third_year' => $this->income_third_year,
+            'expense_first_year' => $this->expense_first_year,
+            'expense_second_year' => $this->expense_second_year,
+            'expense_third_year' => $this->expense_third_year,
             'budget_chapter' => new BudgetChapterResource($this->budgetChapter)
         ];
     }

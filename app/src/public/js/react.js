@@ -69,43 +69,53 @@ var BudgetSimulation = /*#__PURE__*/function (_React$Component) {
       };
 
       if (this.props.current_budget_state_change !== null) {
-        var state_coefficient = this.props.current_budget_state_change.is_increase ? 1 : -1;
-
-        if (this.props.current_budget_state_change.is_expense) {
-          change_first_year.expense = state_coefficient * this.props.current_budget_state_change.first_year;
-          change_second_year.expense = state_coefficient * this.props.current_budget_state_change.second_year;
-          change_third_year.expense = state_coefficient * this.props.current_budget_state_change.third_year;
-        } else {
-          change_first_year.income = state_coefficient * this.props.current_budget_state_change.first_year;
-          change_second_year.income = state_coefficient * this.props.current_budget_state_change.second_year;
-          change_third_year.income = state_coefficient * this.props.current_budget_state_change.third_year;
-        }
+        change_first_year.income = this.props.current_budget_state_change.income_first_year;
+        change_first_year.expense = this.props.current_budget_state_change.expense_first_year;
+        change_second_year.income = this.props.current_budget_state_change.income_second_year;
+        change_second_year.expense = this.props.current_budget_state_change.expense_second_year;
+        change_third_year.income = this.props.current_budget_state_change.income_third_year;
+        change_third_year.expense = this.props.current_budget_state_change.expense_third_year;
       }
 
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "simulation",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
-          children: "Prvn\xED rok"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BudgetSimulationRow, {
-          income: this.props.budget.income_first_year,
-          expense: this.props.budget.expense_first_year,
-          change: change_first_year,
-          formatter: this.props.formatter
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
-          children: "Druh\xFD rok"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BudgetSimulationRow, {
-          income: this.props.budget.income_second_year,
-          expense: this.props.budget.expense_second_year,
-          change: change_second_year,
-          formatter: this.props.formatter
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
-          children: "T\u0159et\xED rok"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BudgetSimulationRow, {
-          income: this.props.budget.income_third_year,
-          expense: this.props.budget.expense_third_year,
-          change: change_third_year,
-          formatter: this.props.formatter
-        })]
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
+          className: "table table-hover",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("thead", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              children: "Rok"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              children: "P\u0159\xEDjmy"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              children: "V\xFDdaje"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              children: "V\xFDsledek rozpo\u010Dtu"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tbody", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BudgetSimulationRow, {
+              year: "2022",
+              income: this.props.budget.income_first_year,
+              expense: this.props.budget.expense_first_year,
+              change: change_first_year,
+              formatter: this.props.formatter,
+              signFormatter: this.props.signFormatter
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BudgetSimulationRow, {
+              year: "2023",
+              income: this.props.budget.income_second_year,
+              expense: this.props.budget.expense_second_year,
+              change: change_second_year,
+              formatter: this.props.formatter,
+              signFormatter: this.props.signFormatter
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BudgetSimulationRow, {
+              year: "2024",
+              income: this.props.budget.income_third_year,
+              expense: this.props.budget.expense_third_year,
+              change: change_third_year,
+              formatter: this.props.formatter,
+              signFormatter: this.props.signFormatter
+            })]
+          })]
+        })
       });
     }
   }]);
@@ -140,37 +150,29 @@ var BudgetSimulationRow = /*#__PURE__*/function (_React$Component2) {
         change_result -= this.props.change.expense;
       }
 
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "row",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "col-md-4",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
-            children: "P\u0159\xEDjmy"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+          children: this.props.year
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             children: this.props.formatter.format(this.props.income)
           }), this.props.change.income && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "change",
-            children: this.props.formatter.format(this.props.change.income)
+            className: "text-info",
+            children: this.props.signFormatter.format(this.props.change.income)
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "col-md-4",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
-            children: "V\xFDdaje"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             children: this.props.formatter.format(this.props.expense)
           }), this.props.change.expense && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "change",
-            children: this.props.formatter.format(this.props.change.expense)
+            className: "text-info",
+            children: this.props.signFormatter.format(this.props.change.expense)
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "col-md-4",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
-            children: "Stav rozpo\u010Dtu"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             children: this.props.formatter.format(result)
           }), this.props.change.expense && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "change",
-            children: this.props.formatter.format(result + change_result)
+            className: "text-info",
+            children: this.props.signFormatter.format(result + change_result)
           })]
         })]
       });
@@ -241,20 +243,42 @@ var BudgetStateChange = /*#__PURE__*/function (_React$Component) {
           children: "Kapitola rozpo\u010Dtu"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
           children: this.props.budget_state_change.budget_chapter.name
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h6", {
-          children: ["Zm\u011Bna ", this.props.budget_state_change.is_expense ? 'výdajů' : 'příjmů']
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
-          children: "Prvn\xED rok"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-          children: [this.props.budget_state_change.is_increase ? '+' : '-', " ", this.props.formatter.format(this.props.budget_state_change.first_year)]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
-          children: "Druh\xFD rok"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-          children: [this.props.budget_state_change.is_increase ? '+' : '-', " ", this.props.formatter.format(this.props.budget_state_change.second_year)]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
-          children: "T\u0159et\xED rok"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-          children: [this.props.budget_state_change.is_increase ? '+' : '-', " ", this.props.formatter.format(this.props.budget_state_change.third_year)]
+        }), this.props.budget_state_change.income_first_year !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+            children: "Zm\u011Bna p\u0159\xEDjm\u016F pro rok 2022"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: this.props.signFormatter.format(this.props.budget_state_change.income_first_year)
+          })]
+        }), this.props.budget_state_change.income_second_year !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+            children: "Zm\u011Bna p\u0159\xEDjm\u016F pro rok 2023"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: this.props.signFormatter.format(this.props.budget_state_change.income_second_year)
+          })]
+        }), this.props.budget_state_change.income_third_year !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+            children: "Zm\u011Bna p\u0159\xEDjm\u016F pro rok 2024"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: this.props.signFormatter.format(this.props.budget_state_change.income_third_year)
+          })]
+        }), this.props.budget_state_change.expense_first_year !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+            children: "Zm\u011Bna v\xFDdaj\u016F pro rok 2022"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: this.props.signFormatter.format(this.props.budget_state_change.expense_first_year)
+          })]
+        }), this.props.budget_state_change.expense_second_year !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+            children: "Zm\u011Bna v\xFDdaj\u016F pro rok 2023"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: this.props.signFormatter.format(this.props.budget_state_change.expense_second_year)
+          })]
+        }), this.props.budget_state_change.expense_third_year !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+            children: "Zm\u011Bna v\xFDdaj\u016F pro rok 2024"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: this.props.signFormatter.format(this.props.budget_state_change.expense_third_year)
+          })]
         })]
       });
     }
@@ -445,7 +469,7 @@ var Question = /*#__PURE__*/function (_React$Component) {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "col-md-6",
                   children: answer.budget_state_change && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_BudgetStateChange__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                    formatter: _this2.props.formatter,
+                    signFormatter: _this2.props.signFormatter,
                     budget_state_change: answer.budget_state_change
                   })
                 })]
@@ -855,17 +879,12 @@ var Quiz = /*#__PURE__*/function (_React$Component) {
           var expense_third_year_change = 0;
 
           if (_this2.state.current_budget_state_change) {
-            var state_coefficient = _this2.state.current_budget_state_change.is_increase ? 1 : -1;
-
-            if (_this2.state.current_budget_state_change.is_expense) {
-              expense_first_year_change = state_coefficient * _this2.state.current_budget_state_change.first_year;
-              expense_second_year_change = state_coefficient * _this2.state.current_budget_state_change.second_year;
-              expense_third_year_change = state_coefficient * _this2.state.current_budget_state_change.third_year;
-            } else {
-              income_first_year_change = state_coefficient * _this2.state.current_budget_state_change.first_year;
-              income_second_year_change = state_coefficient * _this2.state.current_budget_state_change.second_year;
-              income_third_year_change = state_coefficient * _this2.state.current_budget_state_change.third_year;
-            }
+            income_first_year_change = _this2.state.current_budget_state_change.income_first_year;
+            expense_first_year_change = _this2.state.current_budget_state_change.expense_first_year;
+            income_second_year_change = _this2.state.current_budget_state_change.income_second_year;
+            expense_second_year_change = _this2.state.current_budget_state_change.expense_second_year;
+            income_third_year_change = _this2.state.current_budget_state_change.income_third_year;
+            expense_third_year_change = _this2.state.current_budget_state_change.expense_third_year;
           }
 
           _this2.setState(function (state, _) {
@@ -899,12 +918,19 @@ var Quiz = /*#__PURE__*/function (_React$Component) {
         currency: 'CZK',
         maximumFractionDigits: 3
       });
+      var signFormatter = Intl.NumberFormat('cs', {
+        notation: 'compact',
+        signDisplay: 'exceptZero',
+        style: 'currency',
+        currency: 'CZK',
+        maximumFractionDigits: 3
+      });
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "quiz",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Question__WEBPACK_IMPORTED_MODULE_1__["default"], {
           question: question,
           onSelectAnswer: this.selectAnswer,
-          formatter: formatter
+          signFormatter: signFormatter
         }), this.state.error_message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "error_message alert alert-danger",
           children: this.state.error_message
@@ -916,7 +942,8 @@ var Quiz = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_BudgetSimulation__WEBPACK_IMPORTED_MODULE_2__["default"], {
           budget: this.state.budget,
           current_budget_state_change: this.state.current_budget_state_change,
-          formatter: formatter
+          formatter: formatter,
+          signFormatter: signFormatter
         })]
       });
     }

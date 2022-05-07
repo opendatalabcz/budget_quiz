@@ -48,7 +48,7 @@ export default class Question extends React.Component {
                                     </div>
                                     <div className="col-md-6">
                                         {answer.budget_state_change &&
-                                            <BudgetStateChange formatter={this.props.formatter} budget_state_change={answer.budget_state_change} />
+                                            <BudgetStateChange signFormatter={this.props.signFormatter} budget_state_change={answer.budget_state_change} />
                                         }
                                     </div>
                                 </div>

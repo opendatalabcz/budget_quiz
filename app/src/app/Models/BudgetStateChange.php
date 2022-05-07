@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id
  * @property $created_at
  * @property $updated_at
- * @property $is_increase
- * @property $is_expense
- * @property $first_year
- * @property $second_year
- * @property $third_year
+ * @property $income_first_year
+ * @property $income_second_year
+ * @property $income_third_year
+ * @property $expense_first_year
+ * @property $expense_second_year
+ * @property $expense_third_year
  * @property $budget_chapter_id
  * @property $answer_id
  */

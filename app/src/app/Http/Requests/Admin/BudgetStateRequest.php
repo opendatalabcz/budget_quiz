@@ -72,24 +72,24 @@ class BudgetStateRequest extends FormRequest
     public function messages()
     {
         return [
-            'budget_state_income_first_year.required' => 'Příjem pro první rok musí být zadán',
-            'budget_state_income_first_year.min' => 'Příjem pro první rok musí být nezáporné číslo',
-            'budget_state_income_first_year.numeric' => 'Příjem pro první rok musí být číslo',
-            'budget_state_income_second_year.required' => 'Příjem pro druhý rok musí být zadán',
-            'budget_state_income_second_year.min' => 'Příjem pro druhý rok musí být nezáporné číslo',
-            'budget_state_income_second_year.numeric' => 'Příjem pro druhý rok musí být číslo',
-            'budget_state_income_third_year.required' => 'Příjem pro třetí rok musí být zadán',
-            'budget_state_income_third_year.min' => 'Příjem pro třetí rok musí být nezáporné číslo',
-            'budget_state_income_third_year.numeric' => 'Příjem pro třetí rok musí být číslo',
-            'budget_state_expense_first_year.required' => 'Výdaj pro první rok musí být zadán',
-            'budget_state_expense_first_year.min' => 'Výdaj pro první rok musí být nezáporné číslo',
-            'budget_state_expense_first_year.numeric' => 'Výdaj pro první rok musí být číslo',
-            'budget_state_expense_second_year.required' => 'Výdaj pro druhý rok musí být zadán',
-            'budget_state_expense_second_year.min' => 'Výdaj pro druhý rok musí být nezáporné číslo',
-            'budget_state_expense_second_year.numeric' => 'Výdaj pro druhý rok musí být číslo',
-            'budget_state_expense_third_year.required' => 'Výdaj pro třetí rok musí být zadán',
-            'budget_state_expense_third_year.min' => 'Výdaj pro třetí rok musí být nezáporné číslo',
-            'budget_state_expense_third_year.numeric' => 'Výdaj pro třetí rok musí být číslo'
+            'budget_state_income_first_year.required' => 'Příjem pro rok '. config('app.first_year') .' musí být zadán',
+            'budget_state_income_first_year.min' => 'Příjem pro rok '. config('app.first_year') .' musí být nezáporné číslo',
+            'budget_state_income_first_year.numeric' => 'Příjem pro rok '. config('app.first_year') .' musí být číslo',
+            'budget_state_income_second_year.required' => 'Příjem pro rok '. config('app.second_year') .' musí být zadán',
+            'budget_state_income_second_year.min' => 'Příjem pro rok '. config('app.second_year') .' musí být nezáporné číslo',
+            'budget_state_income_second_year.numeric' => 'Příjem pro rok '. config('app.second_year') .' musí být číslo',
+            'budget_state_income_third_year.required' => 'Příjem pro rok '. config('app.third_year') .' musí být zadán',
+            'budget_state_income_third_year.min' => 'Příjem pro rok '. config('app.third_year') .' musí být nezáporné číslo',
+            'budget_state_income_third_year.numeric' => 'Příjem pro rok '. config('app.third_year') .' musí být číslo',
+            'budget_state_expense_first_year.required' => 'Výdaj pro rok '. config('app.first_year') .' musí být zadán',
+            'budget_state_expense_first_year.min' => 'Výdaj pro rok '. config('app.first_year') .' musí být nezáporné číslo',
+            'budget_state_expense_first_year.numeric' => 'Výdaj pro rok '. config('app.first_year') .' musí být číslo',
+            'budget_state_expense_second_year.required' => 'Výdaj pro rok '. config('app.second_year') .' musí být zadán',
+            'budget_state_expense_second_year.min' => 'Výdaj pro rok '. config('app.second_year') .' musí být nezáporné číslo',
+            'budget_state_expense_second_year.numeric' => 'Výdaj pro rok '. config('app.second_year') .' musí být číslo',
+            'budget_state_expense_third_year.required' => 'Výdaj pro rok '. config('app.third_year') .' musí být zadán',
+            'budget_state_expense_third_year.min' => 'Výdaj pro rok '. config('app.third_year') .' musí být nezáporné číslo',
+            'budget_state_expense_third_year.numeric' => 'Výdaj pro rok '. config('app.third_year') .' musí být číslo'
         ];
     }
 }

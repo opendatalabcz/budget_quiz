@@ -29,23 +29,35 @@ class BudgetStateChangeRequest extends FormRequest
                 'required',
                 'exists:\App\Models\BudgetChapter,id'
             ],
-            'budget_state_change_first_year' => [
+            'budget_state_change_income_first_year' => [
                 'bail',
                 'required',
-                'numeric',
-                'min:0'
+                'numeric'
             ],
-            'budget_state_change_second_year' => [
+            'budget_state_change_income_second_year' => [
                 'bail',
                 'required',
-                'numeric',
-                'min:0'
+                'numeric'
             ],
-            'budget_state_change_third_year' => [
+            'budget_state_change_income_third_year' => [
                 'bail',
                 'required',
-                'numeric',
-                'min:0'
+                'numeric'
+            ],
+            'budget_state_change_expense_first_year' => [
+                'bail',
+                'required',
+                'numeric'
+            ],
+            'budget_state_change_expense_second_year' => [
+                'bail',
+                'required',
+                'numeric'
+            ],
+            'budget_state_change_expense_third_year' => [
+                'bail',
+                'required',
+                'numeric'
             ]
         ];
     }
@@ -58,17 +70,20 @@ class BudgetStateChangeRequest extends FormRequest
     public function messages()
     {
         return [
-            'budget_state_change_chapter_id.required' => 'Výdaj pro první rok musí být zadán',
+            'budget_state_change_chapter_id.required' => 'Kapitola rozpočtu musí být zadána',
             'budget_state_change_chapter_id.exists' => 'Zvolená kapitola neexistuje, zkuste obnovit stránku',
-            'budget_state_change_first_year.required' => 'Příjem pro první rok musí být zadán',
-            'budget_state_change_first_year.min' => 'Příjem pro první rok musí být nezáporné číslo',
-            'budget_state_change_first_year.numeric' => 'Příjem pro první rok musí být číslo',
-            'budget_state_change_second_year.required' => 'Příjem pro druhý rok musí být zadán',
-            'budget_state_change_second_year.min' => 'Příjem pro druhý rok musí být nezáporné číslo',
-            'budget_state_change_second_year.numeric' => 'Příjem pro druhý rok musí být číslo',
-            'budget_state_change_third_year.required' => 'Příjem pro třetí rok musí být zadán',
-            'budget_state_change_third_year.min' => 'Příjem pro třetí rok musí být nezáporné číslo',
-            'budget_state_change_third_year.numeric' => 'Příjem pro třetí rok musí být číslo'
+            'budget_state_change_income_first_year.required' => 'Změna příjmu pro rok '. config('app.first_year') .' musí být zadána',
+            'budget_state_change_income_first_year.numeric' => 'Změna příjmu pro rok '. config('app.first_year') .' musí být číslo',
+            'budget_state_change_income_second_year.required' => 'Změna příjmu pro rok '. config('app.second_year') .' musí být zadána',
+            'budget_state_change_income_second_year.numeric' => 'Změna příjmu pro rok '. config('app.second_year') .' musí být číslo',
+            'budget_state_change_income_third_year.required' => 'Změna příjmu pro rok '. config('app.third_year') .' musí být zadána',
+            'budget_state_change_income_third_year.numeric' => 'Změna příjmu pro rok '. config('app.third_year') .' musí být číslo',
+            'budget_state_change_expense_first_year.required' => 'Změna výdaje pro rok '. config('app.first_year') .' musí být zadána',
+            'budget_state_change_expense_first_year.numeric' => 'Změna výdaje pro rok '. config('app.first_year') .' musí být číslo',
+            'budget_state_change_expense_second_year.required' => 'Změna výdaje pro rok '. config('app.second_year') .' musí být zadána',
+            'budget_state_change_expense_second_year.numeric' => 'Změna výdaje pro rok '. config('app.second_year') .' musí být číslo',
+            'budget_state_change_expense_third_year.required' => 'Změna výdaje pro rok '. config('app.third_year') .' musí být zadána',
+            'budget_state_change_expense_third_year.numeric' => 'Změna výdaje pro rok '. config('app.third_year') .' musí být číslo'
         ];
     }
 }

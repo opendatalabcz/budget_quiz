@@ -7,23 +7,34 @@
         Pro kapitolu státního rozpočtu ID {{ $budgetChapter->id }} ({{ $budgetChapter->number }} – {{ $budgetChapter->name }})
     </x-slot:description>
 
-    <h4>Příjem 1. rok</h4>
-    <div class="item-value mb-3">{{ $budgetState->income_first_year }}</div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Příjmy</h2>
 
-    <h4>Příjem 2. rok</h4>
-    <div class="item-value mb-3">{{ $budgetState->income_second_year }}</div>
+            <h4>{{ config('app.first_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetState->income_first_year, 0, null, ' ') }}&nbsp;Kč</div>
 
-    <h4>Příjem 3. rok</h4>
-    <div class="item-value mb-3">{{ $budgetState->income_third_year }}</div>
+            <h4>{{ config('app.second_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetState->income_second_year, 0, null, ' ') }}&nbsp;Kč</div>
 
-    <h4>Výdaj 1. rok</h4>
-    <div class="item-value mb-3">{{ $budgetState->expense_first_year }}</div>
+            <h4>{{ config('app.first_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetState->income_third_year, 0, null, ' ') }}&nbsp;Kč</div>
+        </div>
 
-    <h4>Výdaj 2. rok</h4>
-    <div class="item-value mb-3">{{ $budgetState->expense_second_year }}</div>
+        <div class="col-md-6">
+            <h2>Výdaje</h2>
 
-    <h4>Výdaj 3. rok</h4>
-    <div class="item-value mb-3">{{ $budgetState->expense_third_year }}</div>
+            <h4>{{ config('app.first_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetState->expense_first_year, 0, null, ' ') }}&nbsp;Kč</div>
+
+            <h4>{{ config('app.second_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetState->expense_second_year, 0, null, ' ') }}&nbsp;Kč</div>
+
+            <h4>{{ config('app.first_year') }}</h4>
+            <div class="item-value mb-3">{{ number_format($budgetState->expense_third_year, 0, null, ' ') }}&nbsp;Kč</div>
+
+        </div>
+    </div>
 
     <div class="mt-3">
         <x-admin.button-edit :href="route('admin.budget_chapters.budget_state.edit', [$budgetChapter, $budgetState])" />
