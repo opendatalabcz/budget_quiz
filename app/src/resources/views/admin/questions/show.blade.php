@@ -17,6 +17,8 @@
         <div class="col-md-6">
             <h2>Odpovědi</h2>
 
+            <x-admin.button-add :href="route('admin.questions.answers.create', $question)" />
+
             <div class="table-responsive">
                 <table class="table">
                     <thead>

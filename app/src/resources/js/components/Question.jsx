@@ -7,10 +7,11 @@ export default class Question extends React.Component {
 
         this.state = {
             selected_answer: null
-        }
+        };
 
         // binding
-        this.selectAnswer = this.selectAnswer.bind(this)
+        this.selectAnswer = this.selectAnswer.bind(this);
+        this.onRadioChange = this.onRadioChange.bind(this);
     }
 
     selectAnswer(answer_id, budget_state_change) {
@@ -21,18 +22,23 @@ export default class Question extends React.Component {
         this.props.onSelectAnswer(answer_id, budget_state_change);
     }
 
+    onRadioChange(event) {
+        event.target.click();
+    }
+
     render() {
         return (
             <div className="question">
                 <h2>Otázka číslo {this.props.question.number} – {this.props.question.title}</h2>
-                <p>{this.props.question.description}</p>
+                <p className="mb-2">{this.props.question.description}</p>
 
+                <h3>Zvolte právě jednu z následujících odpovědí:</h3>
                 <div className="answers list-group">
                     {this.props.question.answers.map((answer) => {
-                        let classes = "list-group-item list-group-item-action mb-3";
+                        let classes = "list-group-item list-group-item-action py-3";
 
                         if (answer.id === this.state.selected_answer) {
-                            classes += " border-primary";
+                            classes += " border-primary border";
                         }
 
                         return (
@@ -42,7 +48,13 @@ export default class Question extends React.Component {
                                    event.preventDefault();
                                }}>
                                 <div className="row">
-                                    <div className="col-md-6">
+                                    <div className="col-sm-1 pt-3">
+                                        <div className="form-check">
+                                            <input className="form-check-input position-static" type="radio"
+                                                   name="answer_radio" value={answer.id} checked={answer.id === this.state.selected_answer} onChange={this.onRadioChange} />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-5">
                                         <h4>{answer.title}</h4>
                                         <p>{answer.description}</p>
                                     </div>

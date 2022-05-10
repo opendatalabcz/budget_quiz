@@ -1,5 +1,6 @@
 <x-layout>
     <h1>Kvíz</h1>
+    <p class="lead mb-3">Níže můžete vyplnit kvíz, který zároveň provádí simulaci státního rozpočtu, takže rovnou vidíte výsledky Vaších kroků.</p>
 
     <div id="quizReact"></div>
 

@@ -151,7 +151,7 @@ export default class Questionnaire extends React.Component {
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="quiz-party-input" className="form-label">Kterou stranu by jste volil(a)?</label>
+                    <label htmlFor="quiz-party-input" className="form-label">Kterou stranu byste volil(a)?</label>
                     <select name="quiz_party" id="quiz-party-input"
                             className={classParty}
                             value={this.state.quiz_party}

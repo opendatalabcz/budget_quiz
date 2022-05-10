@@ -64,12 +64,12 @@ return new class extends Migration
         Schema::create('budget_state_changes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('income_first_year', false, true);
-            $table->bigInteger('expense_first_year', false, true);
-            $table->bigInteger('income_second_year', false, true);
-            $table->bigInteger('expense_second_year', false, true);
-            $table->bigInteger('income_third_year', false, true);
-            $table->bigInteger('expense_third_year', false, true);
+            $table->bigInteger('income_first_year');
+            $table->bigInteger('expense_first_year');
+            $table->bigInteger('income_second_year');
+            $table->bigInteger('expense_second_year');
+            $table->bigInteger('income_third_year');
+            $table->bigInteger('expense_third_year');
             $table->foreignId('budget_chapter_id')
                 ->constrained()
                 ->onUpdate('cascade')
@@ -121,8 +121,6 @@ return new class extends Migration
 
         Schema::create('quiz_answers', function (Blueprint $table) {
             $table->id();
-            // not now probably?
-            // $table->timestamps();
             $table->foreignId('quiz_id')
                 ->constrained('quizzes')
                 ->onUpdate('cascade')

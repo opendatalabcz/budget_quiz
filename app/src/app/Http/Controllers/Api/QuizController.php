@@ -18,7 +18,6 @@ use App\Models\Quiz;
 use App\Models\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 
 class QuizController extends Controller
 {

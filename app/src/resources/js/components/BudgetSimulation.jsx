@@ -21,10 +21,12 @@ export default class BudgetSimulation extends React.Component {
           <div className="simulation">
               <table className="table table-hover">
                   <thead>
-                    <th>Rok</th>
-                    <th>Příjmy</th>
-                    <th>Výdaje</th>
-                    <th>Výsledek rozpočtu</th>
+                      <tr>
+                        <th>Rok</th>
+                        <th>Příjmy</th>
+                        <th>Výdaje</th>
+                        <th>Výsledek rozpočtu</th>
+                      </tr>
                   </thead>
                   <tbody>
                       <BudgetSimulationRow year="2022"
@@ -72,20 +74,20 @@ class BudgetSimulationRow extends React.Component {
                 <td>
                     <p>{this.props.formatter.format(this.props.income)}</p>
                     {this.props.change.income &&
-                        <p className="text-info">{this.props.signFormatter.format(this.props.change.income)}</p>
+                        <p className="text-primary">{this.props.signFormatter.format(this.props.change.income)}</p>
                     }
                 </td>
                 <td>
                     <p>{this.props.formatter.format(this.props.expense)}</p>
                     {this.props.change.expense &&
-                        <p className="text-info">{this.props.signFormatter.format(this.props.change.expense)}</p>
+                        <p className="text-primary">{this.props.signFormatter.format(this.props.change.expense)}</p>
                     }
                 </td>
                 <td>
                     <p>{this.props.formatter.format(result)}</p>
 
                     {this.props.change.expense &&
-                        <p className="text-info">{this.props.signFormatter.format(result + change_result)}</p>
+                        <p className="text-primary">{this.props.signFormatter.format(result + change_result)}</p>
                     }
                 </td>
             </tr>

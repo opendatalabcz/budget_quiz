@@ -81,16 +81,18 @@ var BudgetSimulation = /*#__PURE__*/function (_React$Component) {
         className: "simulation",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
           className: "table table-hover",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("thead", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-              children: "Rok"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-              children: "P\u0159\xEDjmy"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-              children: "V\xFDdaje"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-              children: "V\xFDsledek rozpo\u010Dtu"
-            })]
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                children: "Rok"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                children: "P\u0159\xEDjmy"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                children: "V\xFDdaje"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                children: "V\xFDsledek rozpo\u010Dtu"
+              })]
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tbody", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BudgetSimulationRow, {
               year: "2022",
@@ -157,21 +159,21 @@ var BudgetSimulationRow = /*#__PURE__*/function (_React$Component2) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             children: this.props.formatter.format(this.props.income)
           }), this.props.change.income && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "text-info",
+            className: "text-primary",
             children: this.props.signFormatter.format(this.props.change.income)
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             children: this.props.formatter.format(this.props.expense)
           }), this.props.change.expense && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "text-info",
+            className: "text-primary",
             children: this.props.signFormatter.format(this.props.change.expense)
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             children: this.props.formatter.format(result)
           }), this.props.change.expense && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "text-info",
+            className: "text-primary",
             children: this.props.signFormatter.format(result + change_result)
           })]
         })]
@@ -418,6 +420,7 @@ var Question = /*#__PURE__*/function (_React$Component) {
     }; // binding
 
     _this.selectAnswer = _this.selectAnswer.bind(_assertThisInitialized(_this));
+    _this.onRadioChange = _this.onRadioChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -430,6 +433,11 @@ var Question = /*#__PURE__*/function (_React$Component) {
       this.props.onSelectAnswer(answer_id, budget_state_change);
     }
   }, {
+    key: "onRadioChange",
+    value: function onRadioChange(event) {
+      event.target.click();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -439,14 +447,17 @@ var Question = /*#__PURE__*/function (_React$Component) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h2", {
           children: ["Ot\xE1zka \u010D\xEDslo ", this.props.question.number, " \u2013 ", this.props.question.title]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          className: "mb-2",
           children: this.props.question.description
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+          children: "Zvolte pr\xE1v\u011B jednu z n\xE1sleduj\xEDc\xEDch odpov\u011Bd\xED:"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "answers list-group",
           children: this.props.question.answers.map(function (answer) {
-            var classes = "list-group-item list-group-item-action mb-3";
+            var classes = "list-group-item list-group-item-action py-3";
 
             if (answer.id === _this2.state.selected_answer) {
-              classes += " border-primary";
+              classes += " border-primary border";
             }
 
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
@@ -459,8 +470,21 @@ var Question = /*#__PURE__*/function (_React$Component) {
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                 className: "row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "col-md-6",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "col-sm-1 pt-3",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "form-check",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                      className: "form-check-input position-static",
+                      type: "radio",
+                      name: "answer_radio",
+                      value: answer.id,
+                      checked: answer.id === _this2.state.selected_answer,
+                      onChange: _this2.onRadioChange
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "col-md-5",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
                     children: answer.title
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
@@ -705,7 +729,7 @@ var Questionnaire = /*#__PURE__*/function (_React$Component) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
             htmlFor: "quiz-party-input",
             className: "form-label",
-            children: "Kterou stranu by jste volil(a)?"
+            children: "Kterou stranu byste volil(a)?"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
             name: "quiz_party",
             id: "quiz-party-input",
@@ -936,7 +960,7 @@ var Quiz = /*#__PURE__*/function (_React$Component) {
           children: this.state.error_message
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
           href: "#",
-          className: "btn btn-primary mb-5",
+          className: "btn btn-primary mt-3 mb-5",
           onClick: this.submitAnswer,
           children: this.state.next_question_btn_text
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_BudgetSimulation__WEBPACK_IMPORTED_MODULE_2__["default"], {

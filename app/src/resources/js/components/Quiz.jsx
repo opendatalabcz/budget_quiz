@@ -141,7 +141,7 @@ export default class Quiz extends React.Component {
                     </div>
                 )}
 
-                <a href="#" className="btn btn-primary mb-5" onClick={this.submitAnswer}>{this.state.next_question_btn_text}</a>
+                <a href="#" className="btn btn-primary mt-3 mb-5" onClick={this.submitAnswer}>{this.state.next_question_btn_text}</a>
 
                 <BudgetSimulation budget={this.state.budget}
                                   current_budget_state_change={this.state.current_budget_state_change}

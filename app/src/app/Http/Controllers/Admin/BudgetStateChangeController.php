@@ -20,7 +20,6 @@ class BudgetStateChangeController extends Controller
     public function create(Question $question, Answer $answer)
     {
         // check chapter present
-
         if (!empty($answer->budgetStateChange)) {
             return redirect()->route('admin.questions.show', $question)
                 ->with('error', 'Odpověď ID ' . $answer->id . ' již má přiřazenou změnu stavu rozpočtu');
