@@ -1,5 +1,7 @@
 # Budget Quiz - Government Budget Simulation
 
+This application was created by Vojtěch Sillik during the Bachelor's thesis at FIT CTU.
+
 ## How to run
 
 ### Docker
