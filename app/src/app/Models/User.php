@@ -12,6 +12,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
+    /** @var false no timestamps for users */
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *

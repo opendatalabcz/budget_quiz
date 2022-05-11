@@ -39,7 +39,7 @@ class PartyController extends Controller
 
         $party = new Party;
 
-        $party->short_name = $validated['party_short_name'];
+        $party->short_name = $validated['party_short_name'] ?? '';
         $party->name = $validated['party_name'];
 
         $party->save();
@@ -66,7 +66,7 @@ class PartyController extends Controller
     public function update(PartyRequest $request, Party $party)
     {
         $validated = $request->validated();
-        $party->short_name = $validated['party_short_name'];
+        $party->short_name = $validated['party_short_name'] ?? '';
         $party->name = $validated['party_name'];
 
         $party->save();
