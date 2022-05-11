@@ -197,5 +197,5 @@ return [
     'first_year' => env('FIRST_YEAR', 2022),
     'second_year' => env('SECOND_YEAR', 2023),
     'third_year' => env('THIRD_YEAR', 2024),
-    'copyright' => date('Y').' | Vytvořil Vojtěch Sillik v rámci své bakalářské práce',
+    'copyright' => env('COPYRIGHT', date('Y')),
 ];

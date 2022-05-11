@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Hash;
 
 class QuizController extends Controller
 {
+    /**
+     * Get all the data for quiz
+     */
     public function data()
     {
         return [
@@ -32,10 +35,16 @@ class QuizController extends Controller
         ];
     }
 
+    /**
+     * Submit new Quiz, return its hash
+     *
+     * @param QuizRequest $request
+     */
     public function store(QuizRequest $request)
     {
         $validated = $request->validated();
 
+        // creates hash from time, request IP and truly random integer
         $hash = Hash::make(time() . $request->ip() . random_int(-1000, 1000));
 
         $quiz = new Quiz;
@@ -54,6 +63,11 @@ class QuizController extends Controller
         ];
     }
 
+    /**
+     * Mark answers for the question in quiz, then check whether the quiz is finished
+     *
+     * @param QuizAnswerRequest $request
+     */
     public function answer(QuizAnswerRequest $request)
     {
         $validated = $request->validated();
@@ -67,7 +81,7 @@ class QuizController extends Controller
 
         if ($quiz->answers_count + 1 === Question::all()->count()) {
             $quiz->is_finished = true;
-            $quiz->hash = '';
+            $quiz->hash = ''; // when the quiz is finished delete hash, it's not needed anymore
 
             $return = [
                 'is_finished' => true,

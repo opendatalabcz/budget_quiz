@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * Represents initial budget state
+ *
  * @property $id
  * @property $created_at
  * @property $updated_at
@@ -32,6 +34,9 @@ class BudgetState extends Model
         'expense_third_year'
     ];
 
+    /**
+     * Get budget chapter to which this initial budget state belongs
+     */
     public function budgetChapter()
     {
         return $this->belongsTo(BudgetChapter::class);

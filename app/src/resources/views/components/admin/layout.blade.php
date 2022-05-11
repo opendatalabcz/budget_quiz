@@ -17,7 +17,7 @@
         </header>
     </div>
 
-    <div class="container">
+    <div class="container py-3">
         @if (isset($title) || isset($description))
             <div class="description mb-4">
                 @isset($title)
@@ -45,5 +45,17 @@
 
             {{ $slot }}
         </div>
+    </div>
+
+    <div class="container footer">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-muted">&copy; {{ config('app.copyright') }}</p>
+
+            <p class="col-md-4 text-center">Vytvořil Vojtěch Sillik v rámci své bakalářské práce</p>
+
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="{{ route('index') }}" class="nav-link px-2 text-muted">Zpět na hlavní stránku</a></li>
+            </ul>
+        </footer>
     </div>
 </x-admin.base-layout>

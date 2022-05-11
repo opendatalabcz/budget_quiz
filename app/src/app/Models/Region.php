@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * Represents region
+ *
  * @property $id
  * @property $created_at
  * @property $updated_at
@@ -19,6 +21,9 @@ class Region extends Model
      */
     protected $fillable = ['name'];
 
+    /**
+     * Get all the quizzes with this assigned region
+     */
     public function quizzes()
     {
         return $this->hasMany(Quiz::class);

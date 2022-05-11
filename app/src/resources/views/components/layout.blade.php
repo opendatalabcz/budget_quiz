@@ -26,13 +26,15 @@
         </header>
     </div>
 
-    <div class="container main-content">
+    <div class="container main-content py-3">
         {{ $slot }}
     </div>
 
     <div class="container footer">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <p class="col-md-4 mb-0 text-muted">&copy; {{ config('app.copyright') }}</p>
+
+            <p class="col-md-4 text-center">Vytvořil Vojtěch Sillik v rámci své bakalářské práce</p>
 
             <ul class="nav col-md-4 justify-content-end">
                 <li class="nav-item"><a href="{{ route('admin.welcome') }}" class="nav-link px-2 text-muted">Administrace</a></li>

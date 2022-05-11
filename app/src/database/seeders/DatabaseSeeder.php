@@ -298,5 +298,95 @@ class DatabaseSeeder extends Seeder
              'income_first_year' => 744024500800, 'income_second_year' => 755009660800, 'income_third_year' => 784171800800,
              'expense_first_year' => 225017873807, 'expense_second_year' => 242719327936, 'expense_third_year' => 250094416053]
         ]);
+
+        DB::table('questions')->insert([
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'number' => 1, 'title' => 'Slevy na jízdném',
+             'description' => 'Vláda rozhodla pro rok 2022 snížit slevy na jízdném na úroveň 50 % ze 75 %, která by měla přinést úsporu 1,9 miliardy korun.
+             Jakou úroveň slevy na jízdném by jste zavedl(a)?'
+             ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'number' => 2, 'title' => 'Výdaje na armádu',
+             'description' => 'Vláda plánuje do roku 2025 zvýšení výdajů na armádu na úroveň 2 % HDP.
+             Chtěl(a) by jste rychlejší růst vůči tomuto plánu, nebo postupovat dle odhadu rozpočtu předchozí vlády, nebo zachovat aktuální stav?'
+             ],
+        ]);
+
+        DB::table('answers')->insert([
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'title' => '75 %',
+             'description' => 'Zvýšit slevu na jízdném zpět na úroveň 75 %, která platila před snížením',
+             'question_id' => 1
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'title' => '50 %',
+             'description' => 'Ponechat aktuální hodnotu slevy na jízdném',
+             'question_id' => 1
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'title' => '25 %',
+             'description' => 'Snížit slevu na jízdném na 25 %.
+             Vláda se domnívá, že takové sníženi již bude mít velký negativní dopad na hromadnou dopravu.',
+             'question_id' => 1
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'title' => 'Zrychlený růst',
+             'description' => 'Pro rok 2023 budou výdaje na armádu ve výši 1,6 % HDP, pro rok 2024 ve výši 1,8 % HDP.',
+             'question_id' => 2
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'title' => 'Stejnoměrný růst',
+             'description' => 'První dva roky bude růst po 0,15 %. V roce 2023 budou výdaje na armádu ve výši 1,5 % HDP a v roce 2024 ve výši 1,65 % HDP.',
+             'question_id' => 2
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'title' => 'Dle předchozí vlády',
+             'description' => 'Výše výdajů bude stanovena dle předpovědi výdajů předchozí vlády, pro rok 2023 na 1,49 % HDP a pro rok 2024 na 1,57 % HDP.',
+             'question_id' => 2
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'title' => 'Stagnace',
+             'description' => 'Ponechat aktuální výši výdajů – 1,35 % HDP.',
+             'question_id' => 2
+            ],
+        ]);
+
+        DB::table('budget_state_changes')->insert([
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'expense_first_year' => 1900000000,
+             'expense_second_year' => 1900000000,
+             'expense_third_year' => 1900000000,
+             'budget_chapter_id' => 17,
+             'answer_id' => 1
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'expense_first_year' => -1900000000,
+             'expense_second_year' => -1900000000,
+             'expense_third_year' => -1900000000,
+             'budget_chapter_id' => 17,
+             'answer_id' => 3
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'expense_first_year' => 0,
+             'expense_second_year' => 7088742469,
+             'expense_third_year' => 15744742469,
+             'budget_chapter_id' => 7,
+             'answer_id' => 4
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'expense_first_year' => 0,
+             'expense_second_year' => 396742469,
+             'expense_third_year' => 5307742469,
+             'budget_chapter_id' => 7,
+             'answer_id' => 5
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'expense_first_year' => 0,
+             'expense_second_year' => -9641257531,
+             'expense_third_year' => -15566257531,
+             'budget_chapter_id' => 7,
+             'answer_id' => 7
+            ],
+        ]);
     }
 }

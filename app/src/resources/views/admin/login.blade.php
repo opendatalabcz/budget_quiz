@@ -3,7 +3,7 @@
         <form method="POST" action="{{ route('admin.login') }}">
             @csrf
 
-            <h1 class="h3 mb-3 fw-normal">{{ env('APP_NAME', 'Budget Quiz') }}</h1>
+            <h1 class="h3 mb-3 fw-normal">{{ config('app.name') }}</h1>
             <h2 class="h4 mb-3 fw-normal">Administrace</h2>
 
             @error('username')
@@ -28,7 +28,16 @@
 
             <button class="w-100 btn btn-lg btn-primary" type="submit">Přihlásit</button>
 
-            <p class="mt-5 mb-3 text-muted">&copy; {{ env('COPYRIGHT', date('Y') . ' All rights reserved') }}</p>
+            <div class="d-flex flex-wrap justify-content-between mt-5 mb-3">
+                <div class="col-md-4">
+                    <p class="text-muted mb-0">&copy; {{ config('app.copyright') }}</p>
+                </div>
+
+                <div class="col-md-4 text-right justify-content-end">
+                    <a href="{{ route('index') }}" class="text-muted text-decoration-none">Hlavní stránka</a>
+                </div>
+            </div>
+
         </form>
     </div>
 </x-admin.base-layout>

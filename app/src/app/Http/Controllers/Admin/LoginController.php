@@ -8,10 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    /**
+     * Show the login page
+     */
     public function show() {
         return view('admin.login');
     }
 
+    /**
+     * Perform login
+     * @param Request $request
+     */
     public function login(Request $request) {
         $credentials = $request->validate([
             'username' => ['required'],
@@ -29,6 +36,10 @@ class LoginController extends Controller
         ])->onlyInput('username', 'remember');
     }
 
+    /**
+     * Logout the user
+     * @param Request $request
+     */
     public function logout(Request $request)
     {
         Auth::logout();

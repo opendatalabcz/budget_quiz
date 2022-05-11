@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * Represents education
+ *
  * @property $id
  * @property $created_at
  * @property $updated_at
@@ -26,6 +28,9 @@ class Education extends Model
      */
     protected $fillable = ['name'];
 
+    /**
+     * Get all the quizzes with this assigned level of education
+     */
     public function quizzes()
     {
         return $this->hasMany(Quiz::class);

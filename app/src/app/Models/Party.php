@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * Represents political party
+ *
  * @property $id
  * @property $created_at
  * @property $updated_at
@@ -35,6 +37,10 @@ class Party extends Model
 
         return $prepend.$this->name;
     }
+
+    /**
+     * Get all the quizzes with this assigned political party
+     */
     public function quizzes()
     {
         return $this->hasMany(Quiz::class);

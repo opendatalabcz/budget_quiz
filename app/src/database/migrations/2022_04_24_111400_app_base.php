@@ -30,12 +30,12 @@ return new class extends Migration
         Schema::create('budget_states', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('income_first_year', false, true);
-            $table->bigInteger('income_second_year', false, true);
-            $table->bigInteger('income_third_year', false, true);
-            $table->bigInteger('expense_first_year', false, true);
-            $table->bigInteger('expense_second_year', false, true);
-            $table->bigInteger('expense_third_year', false, true);
+            $table->bigInteger('income_first_year', false, true)->default(0);
+            $table->bigInteger('income_second_year', false, true)->default(0);
+            $table->bigInteger('income_third_year', false, true)->default(0);
+            $table->bigInteger('expense_first_year', false, true)->default(0);
+            $table->bigInteger('expense_second_year', false, true)->default(0);
+            $table->bigInteger('expense_third_year', false, true)->default(0);
             $table->foreignId('budget_chapter_id')
                 ->constrained()
                 ->onUpdate('cascade')
@@ -64,12 +64,12 @@ return new class extends Migration
         Schema::create('budget_state_changes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('income_first_year');
-            $table->bigInteger('expense_first_year');
-            $table->bigInteger('income_second_year');
-            $table->bigInteger('expense_second_year');
-            $table->bigInteger('income_third_year');
-            $table->bigInteger('expense_third_year');
+            $table->bigInteger('income_first_year')->default(0);
+            $table->bigInteger('expense_first_year')->default(0);
+            $table->bigInteger('income_second_year')->default(0);
+            $table->bigInteger('expense_second_year')->default(0);
+            $table->bigInteger('income_third_year')->default(0);
+            $table->bigInteger('expense_third_year')->default(0);
             $table->foreignId('budget_chapter_id')
                 ->constrained()
                 ->onUpdate('cascade')

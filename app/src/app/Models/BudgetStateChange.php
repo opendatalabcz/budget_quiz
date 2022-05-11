@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * Represents the change of state of budget simulation
+ *
  * @property $id
  * @property $created_at
  * @property $updated_at
@@ -32,11 +34,17 @@ class BudgetStateChange extends Model
         'third_year'
     ];
 
+    /**
+     * Get the answer that this budget state change belongs to
+     */
     public function answer()
     {
         return $this->belongsTo(Answer::class);
     }
 
+    /**
+     * Get the budget chapter that this state change modifies
+     */
     public function budgetChapter()
     {
         return $this->belongsTo(BudgetChapter::class);

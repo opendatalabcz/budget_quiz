@@ -5,9 +5,11 @@ namespace App\View\Components;
 use Illuminate\Routing\Route;
 use Illuminate\View\Component;
 
+/**
+ * Represents navigation link
+ */
 class NavLink extends Component
 {
-
     public string $routeName;
     public bool $isActive;
 
@@ -15,8 +17,8 @@ class NavLink extends Component
      * Create a new component instance.
      *
      * @param Route $route
-     * @param string $routeName
-     * @param string $activeRoutes
+     * @param string $routeName the name of the route
+     * @param string $activeRoutes use 'subNames' when you want to mark subpages of this route also as active for this item
      */
     public function __construct(Route $route, string $routeName, string $activeRoutes = "subNames")
     {

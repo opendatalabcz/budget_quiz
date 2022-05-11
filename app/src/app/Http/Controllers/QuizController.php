@@ -12,22 +12,30 @@ use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
+    /**
+     * Display page with the quiz
+     */
     public function index()
     {
         return view('quiz.index');
     }
 
+    /**
+     * Get results for given quiz
+     * @param Quiz $quiz
+     */
     public function quizResults(Quiz $quiz)
     {
         if ($quiz->is_finished === false) {
             abort(404); // only finished quizzes are allowed
         }
 
+        // get the answers count in finished quizzes
         $answersByTopCount = Answer::withCount(['quizzes' => function(Builder $builder) {
-            $builder->where('is_finished', true); // only quizzes that are finished counts
+            $builder->where('is_finished', true);
         }])->orderBy('quizzes_count', 'desc')->get();
 
-        $questionIds = []; // determine whether we already got question for this answer
+        $questionIds = []; // determine whether we already got answer for this question
         $topAnswers = $answersByTopCount->filter(function ($answer, $key) use (&$questionIds) {
             if (in_array($answer->question_id, $questionIds)) {
                 return false;
@@ -35,7 +43,7 @@ class QuizController extends Controller
                 $questionIds[] = $answer->question_id;
                 return true;
             }
-        }); // filtered top answers for each question
+        });
 
         $questionToAnswer = [];
 
@@ -49,15 +57,17 @@ class QuizController extends Controller
             $questionToUserAnswer[$answer->question_id] = $answer;
         }
 
+        // count initial budget state for all 3 years
         $budgetResults = BudgetState::all()->reduce(function($carry, $budgetState) {
             return [
                 $carry[0] + $budgetState->income_first_year - $budgetState->expense_first_year,
                 $carry[1] + $budgetState->income_second_year - $budgetState->expense_second_year,
                 $carry[2] + $budgetState->income_third_year - $budgetState->expense_third_year
             ];
-        }, [0, 0, 0]); // get initial state for all years
+        }, [0, 0, 0]);
 
 
+        // count all the budget state changes for all 3 years
         $budgetResults = $quiz->answers->reduce(function($carry,  $answer) {
             if ($answer->budgetStateChange) { // this answer has a budget state change assigned
                 return [
@@ -79,16 +89,20 @@ class QuizController extends Controller
         ]);
     }
 
+    /**
+     * Show results from all finished quizzes
+     */
     public function results()
     {
         $parties = Party::all();
         $partyToAnswersCount = [];
+
+        // get answer counts for each party and for each question
         foreach ($parties as $party) {
             $answers = Answer::withCount(['quizzes' => function(Builder $builder) use ($party) {
                 $builder->where('is_finished', true)
                     ->where('party_id', $party->id);
-            }])->orderBy('quizzes_count', 'desc')
-                ->get();
+            }])->get();
 
             foreach ($answers as $answer) {
                 $partyToAnswersCount[$party->id][$answer->id] = $answer->quizzes_count;

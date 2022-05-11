@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * Represents quiz question
+ *
  * @property $id
  * @property $created_at
  * @property $updated_at
@@ -21,6 +23,9 @@ class Question extends Model
      */
     protected $fillable = ['number', 'title', 'description'];
 
+    /**
+     * Get all answers for this question
+     */
     public function answers()
     {
         return $this->hasMany(Answer::class);

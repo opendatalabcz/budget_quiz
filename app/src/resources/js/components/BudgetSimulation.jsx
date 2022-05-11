@@ -73,20 +73,20 @@ class BudgetSimulationRow extends React.Component {
                 <td>{this.props.year}</td>
                 <td>
                     <p>{this.props.formatter.format(this.props.income)}</p>
-                    {this.props.change.income &&
+                    {this.props.change.income !== null &&
                         <p className="text-primary">{this.props.signFormatter.format(this.props.change.income)}</p>
                     }
                 </td>
                 <td>
                     <p>{this.props.formatter.format(this.props.expense)}</p>
-                    {this.props.change.expense &&
+                    {this.props.change.expense !== null &&
                         <p className="text-primary">{this.props.signFormatter.format(this.props.change.expense)}</p>
                     }
                 </td>
                 <td>
                     <p>{this.props.formatter.format(result)}</p>
 
-                    {this.props.change.expense &&
+                    {change_result !== null &&
                         <p className="text-primary">{this.props.signFormatter.format(result + change_result)}</p>
                     }
                 </td>
