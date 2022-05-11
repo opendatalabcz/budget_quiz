@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Budget Quiz'),
 
     /*
     |--------------------------------------------------------------------------
@@ -194,4 +194,8 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'first_year' => env('FIRST_YEAR', 2022),
+    'second_year' => env('SECOND_YEAR', 2023),
+    'third_year' => env('THIRD_YEAR', 2024),
+    'copyright' => env('COPYRIGHT', date('Y')),
 ];
