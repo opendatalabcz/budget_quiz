@@ -12,7 +12,7 @@ This application was created by Vojtěch Sillik during the Bachelor's thesis at 
 
 3. In folder app/src copy .env.example as .env, you can edit the default values in here, don't forget to edit the database credentials and database name to your selected ones in first step.
 
-4. pen CLI in Docker container `php-apache`
+4. Open CLI in Docker container `php-apache`
    1. run `composer install`
    2. run `npm install`
    3. If you want to change the default admin password, then run `php artisan password:hash YOUR_PASSWORD_GOES_HERE` and copy generated hash to `ADMIN_PASSWORD_HASH` in application .env file.
