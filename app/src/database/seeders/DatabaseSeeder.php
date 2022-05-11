@@ -303,12 +303,17 @@ class DatabaseSeeder extends Seeder
             ['created_at' => 'now()', 'updated_at' => 'now()',
              'number' => 1, 'title' => 'Slevy na jízdném',
              'description' => 'Vláda rozhodla pro rok 2022 snížit slevy na jízdném na úroveň 50 % ze 75 %, která by měla přinést úsporu 1,9 miliardy korun.
-             Jakou úroveň slevy na jízdném by jste zavedl(a)?'
+             Jakou úroveň slevy na jízdném byste zavedl(a)?'
              ],
             ['created_at' => 'now()', 'updated_at' => 'now()',
              'number' => 2, 'title' => 'Výdaje na armádu',
              'description' => 'Vláda plánuje do roku 2025 zvýšení výdajů na armádu na úroveň 2 % HDP.
-             Chtěl(a) by jste rychlejší růst vůči tomuto plánu, nebo postupovat dle odhadu rozpočtu předchozí vlády, nebo zachovat aktuální stav?'
+             Chtěl(a) byste rychlejší růst vůči tomuto plánu, nebo postupovat dle odhadu rozpočtu předchozí vlády, nebo zachovat aktuální stav?'
+             ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'number' => 2, 'title' => 'Valorizace důchodů',
+             'description' => 'Vláda plánuje v září roku 2022 zvýšení výměry důchodu o 5,2 %.
+             Schválil(a) byste takovouto valorizaci?'
              ],
         ]);
 
@@ -349,6 +354,16 @@ class DatabaseSeeder extends Seeder
              'description' => 'Ponechat aktuální výši výdajů – 1,35 % HDP.',
              'question_id' => 2
             ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'title' => 'Ano',
+             'description' => 'Souhlasím s touto valorizací.',
+             'question_id' => 3
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'title' => 'Ne',
+             'description' => 'Nesouhlasím s touto valorizací.',
+             'question_id' => 3
+            ],
         ]);
 
         DB::table('budget_state_changes')->insert([
@@ -386,6 +401,13 @@ class DatabaseSeeder extends Seeder
              'expense_third_year' => -15566257531,
              'budget_chapter_id' => 7,
              'answer_id' => 7
+            ],
+            ['created_at' => 'now()', 'updated_at' => 'now()',
+             'expense_first_year' => 8000000000,
+             'expense_second_year' => 8000000000,
+             'expense_third_year' => 8000000000,
+             'budget_chapter_id' => 11,
+             'answer_id' => 8
             ],
         ]);
     }
